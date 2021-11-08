@@ -1,0 +1,38 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel='stylesheet' type='text/css' href='/unauthenticated/gray-reset-fonts-grids-base.css'>
+<link rel='stylesheet' type='text/css' href='/unauthenticated/gray-virtual-server-style.css' />
+<!--[if IE]>
+<style type="text/css">
+table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }
+</style>
+<![endif]-->
+<script>
+var rowsel = new Array();
+</script>
+<script type='text/javascript' src='/unauthenticated/sorttable.js'></script>
+<meta http-equiv="Content-Type" content="text/html; Charset=UTF-8">
+<title>执行自动作业</title>
+<script type='text/javascript'>
+window.defaultStatus="oms logged into Webmin 1.810 on siyouyun-prod-web-010060036202.kx (CentOS Linux 7.4.1708)";
+</script>
+</head>
+<body bgcolor=#ffffff link=#376ebd vlink=#376ebd text=#000000     data-pagescroll=true>
+<table class='header' width=100%><tr>
+<td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module 索引</a><br>
+</td>
+<td id='headln2c' align=center width=70%><font size=+2>执行自动作业</font></td>
+<td id='headln2r' width=15% valign=top align=right></td></tr></table>
+<p>命令 <tt>php /data/www/devel/oms/daemon/picking/picking_order_to_wms.php -o U2111051636107669186986272</tt> 的输出结果…<p>
+<pre>SELECT COUNT(1) AS total FROM o_oms_order_picking_info WHERE is_tran_wms IN (0,2) AND is_temp &#61; 0 AND express_id &gt; 0 AND (is_to_pms &#61;3 OR is_to_pms&#61;4) AND express_id not in (23,36)   and order_number_new &#61; &#39;U2111051636107669186986272&#39; and stock_id not in (20, 1126, 1352, 2111, 2118, 2119, 2120, 153, 155, 190, 44, 157, 3, 913, 2109, 2167)
+Total : 0
+暂时没有需要同步的配货单信息。
+</pre>
+</div><p>
+<a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>
+&nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业</a>
+&nbsp;|
+&nbsp;<a href="/cron/index.cgi">返回到 自动作业列表</a>
+<br>
+</body></html>

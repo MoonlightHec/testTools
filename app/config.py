@@ -6,6 +6,8 @@
 # @desc :
 """
 # ip地址
+from flask import logging
+
 host = {
     'ip': '10.8.34.218',
     'port': '8081'

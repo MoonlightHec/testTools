@@ -5,6 +5,8 @@
 # @File : tools_soa.py
 # @desc :
 """
+from soa.soa_create_order import SoaCreateOrder, push_to_oms
+from soa.soa_create_order_info import SoaOrderInfo
 
 
 def create_soa_order(user_order_info):

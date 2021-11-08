@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block son_style %}
+    .order-info {
+    width: 400px;
+    border: 1px solid #ccc;
+    float: left;
+    }
+    .webmin-info {
+    width: 800px;
+    border: 1px solid #ccc;
+    float: left;
+    box-sizing: border-box;
+    }
+{% endblock %}
+{% block model %}
+    <div>
+        <div style="float: left">
+            <button class="function-btn" onclick="window.location.href = '/oms/oms_create_order'">oms造单</button>
+        </div>
+        <div style="float: left;text-indent:1em">
+            <button class="function-btn" onclick="window.location.href = '/oms/oms_webmin'">webmin脚本</button>
+        </div>
+        <div style="float: left;text-indent:1em">
+            <button class="function-btn" onclick="window.location.href = '/oms/oms_process'">订单全流程</button>
+        </div>
+        <div style="text-indent:1em">
+            <button class="function-btn" onclick="">......</button>
+        </div>
+    </div>
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for msg in messages %}
+                        <dialog open>{{ msg }}</dialog>
+                    {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <hr/>
+
+    {% block function %}
+
+    {% endblock %}
+{% endblock %}
+
+

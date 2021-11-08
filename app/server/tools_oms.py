@@ -5,6 +5,8 @@
 # @File : tools_oms.py
 # @desc :
 """
+from oms.oms_create_order import OmsCreateOrder
+from oms.oms_create_order_info import OmsOrderInfo
 
 
 def create_oms_order(user_order_info):

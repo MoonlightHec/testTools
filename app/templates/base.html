@@ -12,14 +12,53 @@
 {% endblock %}
 
 {#style样式#}
-{% block style %}
+<style>
+    .sys-btn {
+        width: 100px;
+        height: 30px
+    }
+
+    {% block style %}
+        {% block func_btn %}
+            .function-btn {
+                width: 100px;
+                height: 30px
+            }
+        {% endblock %}
+        {#子类style#}
+        {% block son_style %}
+
+        {% endblock %}
+
+    {% endblock %}
+</style>
+
+<body>
+{% block system %}
+    <div>
+        <br>
+        <div style="float: left">
+            <button class="sys-btn" onclick="window.location.href = '/oms/oms_create_order'">OMS</button>
+        </div>
+        <div style="float: left;text-indent:1em">
+            <button class="sys-btn" onclick="window.location.href = '/soa/soa_checkout_order'">SOA</button>
+        </div>
+        <div style="float: left;text-indent:1em">
+            <button class="sys-btn" onclick="window.location.href = '/sms/oms_process'">SMS</button>
+        </div>
+        <div style="text-indent:1em">
+            <button class="sys-btn" onclick="window.location.href = '/wms/oms_webmin'">......</button>
+        </div>
+        <br>
+        <hr/>
+    </div>
+{% endblock %}
+
+{% block model %}
 
 {% endblock %}
 
-{#body#}
-{% block body %}
-
-{% endblock %}
+</body>
 
 
 </html>

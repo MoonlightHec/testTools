@@ -5,9 +5,10 @@
 # @File : soa.py
 # @desc :
 """
-from flask import Blueprint, render_template, request, jsonify, redirect
+from flask import Blueprint, render_template, request, redirect, url_for
 
 from app.config import host_url
+from app.server.tools_soa import create_soa_order
 
 soa = Blueprint(
     'soa',
@@ -17,9 +18,14 @@ soa = Blueprint(
 )
 
 
-@soa.route('/soa_model.html', methods=['GET', 'POST'])
+@soa.route('/soa_checkout_order', methods=['GET', 'POST'])
 def soa_index():
-    return render_template('soa_model.html', url=host_url)
+    return render_template('soa_checkout_order.html', url=host_url)
+
+
+@soa.route('/soa_xxx', methods=['GET', 'POST'])
+def soa_xxx():
+    return render_template('soa_xxx.html', url=host_url)
 
 
 @soa.route('/create_order', methods=['GET', 'POST'])
@@ -29,6 +35,16 @@ def create_order():
     print("form {}".format(request.form.to_dict()))
     # 将获取到的表单数据转化为dict
     user_order_info = request.form.to_dict()
-    # order_sn = create_oms_order(user_order_info)
-    order_sn = 'https://cashier.dresslily.net/?token=O211103005362114051N3T&lang=en1'
-    return render_template('soa_model.html', url=host_url, cashier=order_sn)
+    cashier = create_soa_order(user_order_info)
+    # return render_template('soa_model.html', url=host_url, cashier=cashier)
+    return redirect(url_for('soa.create_order_redirect', cashier=cashier))
+
+
+@soa.route('/soa_checkout_order/<path:cashier>', methods=['GET', 'POST'])
+def create_order_redirect(cashier):
+    """
+    创建订单后重定向到soa页面，防止刷新二次提交表单
+    :param cashier:
+    :return:
+    """
+    return render_template('soa_checkout_order.html', url=host_url, cashier=cashier)
