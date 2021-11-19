@@ -33,12 +33,12 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
-@app.errorhandler(505)
+@app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('505.html'), 505
+    return render_template('505.html'),500
 
 
 if __name__ == '__main__':
     # --host=10.8.34.218 --port=8081
 
-    app.run(host=host['ip'], port=['port'], debug=True)
+    app.run(host=host['ip'], port=['port'], debug=False)

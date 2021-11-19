@@ -27,15 +27,6 @@
             <button class="function-btn" onclick="">......</button>
         </div>
     </div>
-    <div>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                    {% for msg in messages %}
-                        <dialog open>{{ msg }}</dialog>
-                    {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
     <hr/>
 
     {% block function %}

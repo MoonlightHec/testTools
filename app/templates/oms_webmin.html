@@ -9,29 +9,61 @@
                         <li>php /data/www/devel/oms/daemon/picking/picking_order_to_wms.php -o {配货单号}</li>
                     </ul>
                 </li>
-                <br>
-                <li>匹配自营订单
+                <hr/>
+                <li>匹配订单
                     <ul>OMS匹配订单
                         <li>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php {站点} --order_sn {订单编号}</li>
-                        <li>站点：【RG：33，ZF：45】</li>
+                        <li>站点：【RG：33，ZF：45，DL：18，清仓站：199】</li>
                     </ul>
                 </li>
-                <br>
+                <hr/>
                 <li>推送异常工单到wos
                     <ul>
                         <li>php /data/www/devel/oms/daemon/wos/question/PushToWos.php</li>
                     </ul>
                 </li>
-                <br>
+                <hr/>
                 <li>创建checkout账单申述工单
                     <ul>
                         <li>php /data/www/devel/oms/daemon/case/auto/process_checkout.php</li>
                     </ul>
                 </li>
-                <br>
+                <hr/>
                 <li>物流商限额回收配货单
                     <ul>
                         <li> php daemon/picking/picking_order_auto_cancel_balance.php -o {配货单号}</li>
+                    </ul>
+                </li>
+                <hr/>
+                <li>接收soa付款单
+                    <ul>
+                        <li> php /data/www/devel/oms/daemon/interface_mq/soa/MQ_IntegratedPaymentController.php</li>
+                    </ul>
+                </li>
+                <hr/>
+                <li>接收soa订单
+                    <ul>
+                        <li> flock -xn /tmp/MQ_OrderControllerZF.lock -c 'php /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {站点}'</li>
+                    </ul>
+                </li>
+               <hr/>
+                <li>推送退款请求给soa
+                    <ul>
+                        <li> php /data/www/devel/oms/daemon/refund/auto_common_refund.php --payment_type {原支付方式}</li>
+                        <li>原支付方式：【AWX:826，PAY_CC:827】</li>
+                    </ul>
+                </li>
+                <hr/>
+                <li>退款到电子钱包
+                    <ul>
+                        <li> php /data/www/devel/oms/daemon/wallet/sync_wallet_refund_to_soa.php --apply_sn {退款申请单编号}</li>
+                    </ul>
+                </li>
+                <hr/>
+                <li>电子钱包提现
+                    <ul>
+                        <li> php /data/www/devel/oms/daemon/withdraw/AutoWithdraw/{支付方式}.php</li>
+                        <li>支付方式：【AWX：AutoAirwallexSoaWalletWithdraw，PAY_CC：AutoPacypaySoaWalletWithdraw】</li>
                     </ul>
                 </li>
             </ol>
@@ -41,10 +73,13 @@
                 <div>
                     <select name="webmin-index" onclick="" style="font-size:18px;">
                         <option value="同步配货单到wms">同步配货单到wms</option>
-                        <option value="匹配订单">匹配自营订单</option>
+                        <option value="匹配订单">匹配订单</option>
                         <option value="推送异常工单到wos">推送异常工单到wos</option>
-                        <option value="process_checkout">创建checkout账单申述工单</option>
-                        <option value="picking_order_recycle">物流商限额回收配货单</option>
+                        <option value="接收soa付款单">接收soa付款单</option>
+                        <option value="接收soa订单">接收soa订单</option>
+                        <option value="推送退款请求给soa">推送退款请求给soa</option>
+                        <option value="退款到电子钱包">退款到电子钱包</option>
+                        <option value="电子钱包提现">电子钱包提现</option>
                     </select>
                 </div>
                 <div>

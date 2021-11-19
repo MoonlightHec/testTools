@@ -24,10 +24,11 @@ window.defaultStatus="oms logged into Webmin 1.810 on siyouyun-prod-web-01006003
 </td>
 <td id='headln2c' align=center width=70%><font size=+2>执行自动作业</font></td>
 <td id='headln2r' width=15% valign=top align=right></td></tr></table>
-<p>命令 <tt>php /data/www/devel/oms/daemon/picking/picking_order_to_wms.php -o U2111051636107669186986272</tt> 的输出结果…<p>
-<pre>SELECT COUNT(1) AS total FROM o_oms_order_picking_info WHERE is_tran_wms IN (0,2) AND is_temp &#61; 0 AND express_id &gt; 0 AND (is_to_pms &#61;3 OR is_to_pms&#61;4) AND express_id not in (23,36)   and order_number_new &#61; &#39;U2111051636107669186986272&#39; and stock_id not in (20, 1126, 1352, 2111, 2118, 2119, 2120, 153, 155, 190, 44, 157, 3, 913, 2109, 2167)
-Total : 0
-暂时没有需要同步的配货单信息。
+<p>命令 <tt>php /data/www/devel/oms/daemon/picking/picking_order_to_wms.php -o U2111181637221933186986289</tt> 的输出结果…<p>
+<pre>SELECT COUNT(1) AS total FROM o_oms_order_picking_info WHERE is_tran_wms IN (0,2) AND is_temp &#61; 0 AND express_id &gt; 0 AND (is_to_pms &#61;3 OR is_to_pms&#61;4) AND express_id not in (23,36)   and order_number_new &#61; &#39;U2111181637221933186986289&#39; and stock_id not in (20, 1126, 1352, 2111, 2118, 2119, 2120, 153, 155, 190, 44, 157, 3, 913, 2109, 2167)
+Total : 1
+U2111181637221933-45-1929
+配货单(U2111181637221933186986289)同步完毕
 </pre>
 </div><p>
 <a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>

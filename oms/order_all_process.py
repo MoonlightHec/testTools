@@ -38,11 +38,9 @@ class OrderAllProcess:
         """
         wms_db = DbTools('WMS')
         try:
-            order_number_new = self.get_picking_sn()
             # 查找配货单id
             id_sql = "SELECT id FROM prepare_goods WHERE  prepare_goods_no='%s'"
-            id_res = wms_db.execute_sql(id_sql, order_number_new)
-            picking_id = id_res[0][0]
+            picking_id = wms_db.execute_sql(id_sql, self.get_picking_sn())[0][0]
             del wms_db
             # 执行接收配货单脚本
             if picking_id:
@@ -50,6 +48,39 @@ class OrderAllProcess:
                 return requests.get(url).text
         except IndexError:
             return 'oms未同步配货单'
+
+    def site_push_order(self, site_code):
+        """
+        网站推送订单到oms
+        :param site_code:
+        :return:
+        """
+        sites = {
+            "ZF": "zaful",
+            "DL": "dresslily"
+        }
+        url = "http://www.pc-{}-master-php5.fpm.egomsl.com/eload_admin/crontab/xcmq/order_to_oms_api.php?order_sn={}".format(sites[site_code], self.order_sn)
+        return requests.get(url).text
+
+    def audit_payorder(self):
+        """
+        审核付款单
+        :return:
+        """
+        oms_db = DbTools('OMS')
+        try:
+            # 获取付款单id
+            payorder_id_sql = "SELECT payment_info_id FROM f_oms_payment_info WHERE order_sn='%s'"
+            payment_info_id = oms_db.execute_sql(payorder_id_sql, self.order_sn)[0][0]
+            del oms_db
+
+            # 审核付款单
+            url = 'http://oms.hqygou.com/finance/payorder/payorderaudit/'
+            login = login_session('oms')
+            data = {"payment_info_id": payment_info_id, "status": 1}
+            return login.session.post(url=url, data=data).json()
+        except IndexError:
+            return '付款单不存在'
 
     def deal_question(self):
         """
@@ -138,5 +169,5 @@ class OrderAllProcess:
 
 if __name__ == '__main__':
     # process = OrderAllProcess('Z2012222036285905')
-    process = OrderAllProcess('2021110448545454')
-    logger.info(process.oms_piking_order(sku='148786003', stock_id=1929, express_id=2393))
+    process = OrderAllProcess('L21110301132201812')
+    print(process.audit_payorder())

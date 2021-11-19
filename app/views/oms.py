@@ -48,6 +48,16 @@ def oms_process():
     return render_template('oms_process.html', host=host_url)
 
 
+@oms.route('/oms_process/<path:order_sn>', methods=['GET', 'POST'])
+def get_order_redirect(order_sn):
+    """
+    重定向到订单全流程页面
+    :param order_sn:
+    :return:
+    """
+    return render_template('oms_process.html', host=host_url, order_sn=order_sn)
+
+
 @oms.route("/create_order", methods=["GET", "POST"])
 def get_order_info():
     """
@@ -56,7 +66,7 @@ def get_order_info():
     """
     print("header {}".format(request.headers))
     print("args ", request.args)
-    logger.info("form {}".format(request.form.to_dict()))
+    logger.info("form表单数据 {}".format(request.form.to_dict()))
     # 将获取到的表单数据转化为dict
     user_order_info = request.form.to_dict()
     order_sn = create_oms_order(user_order_info)
@@ -68,16 +78,6 @@ def get_order_info():
     return "创建失败"
 
 
-@oms.route('/oms_process/<path:order_sn>', methods=['GET', 'POST'])
-def get_order_redirect(order_sn):
-    """
-    重定向到订单全流程页面
-    :param order_sn:
-    :return:
-    """
-    return render_template('oms_process.html', host=host_url, order_sn=order_sn)
-
-
 @oms.route('/webmin', methods=['GET', 'POST'])
 def run_webmin():
     """
@@ -85,13 +85,61 @@ def run_webmin():
     :return:
     """
     script_info = request.form.to_dict()
-    logger.info("执行webmin脚本：form {}".format(script_info))
+    logger.info("执行webmin脚本：form表单数据 {}".format(script_info))
     webmin_params = []
     for value in script_info.values():
         if value:
             webmin_params.append(value)
     web_script = WebminObj(app_name='oms')
     return web_script.run_script(*webmin_params)
+
+
+@oms.route('/allProcess/orderFromSite', methods=['GET', 'POST'])
+def site_push_order():
+    """
+    网站推送订单到oms
+    :return:
+    """
+    order_info_site = request.form.to_dict()
+    logger.info("网站推送订单到oms:form表单数据 {}".format(order_info_site))
+    if order_info_site['order-sn']:
+        process = OrderAllProcess(order_info_site['order-sn'])
+        flash(process.site_push_order(order_info_site['order-from']))
+        return redirect(url_for('oms.get_order_redirect', order_sn=order_info_site['order-sn']))
+    flash("请输入订单号")
+    return redirect(url_for('oms.oms_process'))
+
+
+@oms.route('/allProcess/receive_order', methods=['GET', 'POST'])
+def oms_receive_order():
+    """
+    oms接收订单webmin脚本
+    :return:
+    """
+    script_info = request.form.to_dict()
+    logger.info("oms接收网站订单webmin脚本：form表单数据 {}".format(script_info))
+    webmin_params = ["接收soa订单"]
+    for value in script_info.values():
+        if value:
+            webmin_params.append(value)
+    web_script = WebminObj(app_name='oms')
+    return web_script.run_script(*webmin_params)
+
+
+@oms.route('/allProcess/payOrderAudit', methods=["GET", "POST"])
+def order_process_audit_payorder():
+    """
+    审核付款单
+    :return:
+    """
+    order_sn_web = request.form.to_dict()
+    logger.info("oms审核付款单:form表单数据 {}".format(order_sn_web))
+    if order_sn_web['order-sn']:
+        process = OrderAllProcess(order_sn_web['order-sn'])
+        flash(process.audit_payorder())
+        return redirect(url_for('oms.get_order_redirect', order_sn=order_sn_web['order-sn']))
+    flash("请输入订单号")
+    return redirect(url_for('oms.oms_process'))
 
 
 @oms.route("/allProcess/dealQuestion", methods=["GET", "POST"])
@@ -101,7 +149,7 @@ def order_process_deal_question():
     :return:
     """
     order_sn_web = request.form.to_dict()
-    logger.info("oms处理订单问题:form {}".format(order_sn_web))
+    logger.info("oms处理订单问题:form表单数据 {}".format(order_sn_web))
     if order_sn_web['order-sn']:
         process = OrderAllProcess(order_sn_web['order-sn'])
         flash(process.deal_question())
@@ -117,7 +165,7 @@ def order_process_picking_order():
     :return:
     """
     picking_info = request.form.to_dict()
-    logger.info("oms生成配货单:form {}".format(picking_info))
+    logger.info("oms生成配货单:form表单数据 {}".format(picking_info))
     if picking_info['order-sn']:
         process = OrderAllProcess(picking_info['order-sn'])
         flash(process.oms_piking_order(sku=picking_info['goods-sn'], stock_id=picking_info['stock-id'], express_id=picking_info['express-id']))
@@ -133,7 +181,7 @@ def order_process_post_picking():
     :return:
     """
     order_sn_web = request.form.to_dict()
-    logger.info("oms同步配货单:form {}".format(order_sn_web))
+    logger.info("oms同步配货单:form表单数据 {}".format(order_sn_web))
     if order_sn_web['order-sn']:
         process = OrderAllProcess(order_sn_web['order-sn'])
         web_script = WebminObj(app_name='oms')
@@ -148,7 +196,7 @@ def order_process_get_picking():
     :return:
     """
     order_sn_web = request.form.to_dict()
-    logger.info("wms接收配货单生成包裹:form {}".format(order_sn_web))
+    logger.info("wms接收配货单生成包裹:form表单数据 {}".format(order_sn_web))
     if order_sn_web['order-sn']:
         process = OrderAllProcess(order_sn_web['order-sn'])
         return process.wms_get_picking_order()

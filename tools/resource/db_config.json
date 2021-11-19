@@ -1,5 +1,5 @@
 {
-  "PAY": {
+  "SOA": {
     "host": "10.38.2.72",
     "port": 3306,
     "user": "java-service",

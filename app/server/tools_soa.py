@@ -16,6 +16,7 @@ def create_soa_order(user_order_info):
     :return:
     """
     order_info = SoaOrderInfo()
+    order_info.env = user_order_info['soa-env']
     order_info.price = float(user_order_info['price'])
     order_info.currency_code = user_order_info['currency-code']
     order_info.country_name = user_order_info['country-name']

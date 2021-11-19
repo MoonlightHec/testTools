@@ -6,14 +6,56 @@
             <ol>
                 <li>生成订单
                     <div>
-                        <ul>
-                            各网站下单并推到OMS
-                        </ul>
+                        <div>
+                            1).各网站下单并推到OMS：
+                            <div>
+                                <form action="{{ host }}/oms/allProcess/orderFromSite" target="_top" method="POST">
+                                    <div>
+                                        <label>站点：</label>
+                                        <select name="order-from" style="font-size:16px;">
+                                            <option value="ZF">ZF</option>
+                                            <option value="DL">DL</option>
+                                        </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label style="text-indent:2em">订单号：</label>
+                                        <input name="order-sn" value="{{ order_sn }}">
+                                        <input type="submit" value="同步订单">
+                                    </div>
+                                </form>
+                            </div>
+                            <br>
+                            2).OMS接收网站订单：
+                            <div>
+                                <form action="{{ host }}/oms/allProcess/receive_order" target="_blank" method="POST">
+                                    <div>
+                                        <label>站点：</label>
+                                        <select name="order-from" style="font-size:16px;">
+                                            <option value="45">ZF</option>
+                                            <option value="18">DL</option>
+                                        </select>
+                                        <input type="submit" value="接收订单" style="">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <br>
-                        <ul>
-                            OMS新建订单
-                        </ul>
+                        <div>
+                            PS: OMS新建订单
+                        </div>
                     </div>
+                </li>
+                <hr/>
+                <li>审核付款单
+                    <div>
+                        <br>
+                        <form action="{{ host }}/oms/allProcess/payOrderAudit" target="_top" method="POST">
+                            <div>
+                                <label>订单编号：</label>
+                                <input name="order-sn" value="{{ order_sn }}">
+                                <input type="submit" value="审核通过">
+                            </div>
+                        </form>
+                    </div>
+
                 </li>
                 <hr/>
                 <li>OMS匹配订单
@@ -21,7 +63,7 @@
                         <form action="{{ host }}/oms/webmin" target="_blank" method="POST">
                             <br>
                             <div style="width:200px;float:left;box-sizing:border-box;">
-                                <label style="float:left;">订单类型:</label>
+                                <label style="float:left;">订单类型：</label>
                                 <select id="order-type" name="process-order-type" style="font-size:16px;" onclick="select_order_type()">
                                     <script type="text/JavaScript">
                                         function select_order_type() {
@@ -46,12 +88,13 @@
                                 </select>
                             </div>
                             <div style="width: 400px;box-sizing:border-box;">
-                                <label>订单来源:</label>
+                                <label>订单来源：</label>
                                 <select id="order-source" name="process-order-source" style="font-size:16px;">
                                     <option value="">请选择</option>
                                     <option value="45" selected>ZF</option>
                                     <option value="33">RG</option>
                                     <option value="18">DL</option>
+                                    <option value="199">清仓站</option>
                                 </select>
                             </div>
                             <br>
@@ -85,18 +128,18 @@
                         <form action="{{ host }}/oms/allProcess/createPickingOrder" target="_parent" method="POST">
                             <br>
                             <div style="float:left;">
-                                <label style="float:left;">仓库:</label>
+                                <label style="float:left;">仓库：</label>
                                 <select name="stock-id" style="font-size:16px;" onclick="select_order_type()">
                                     <option value="1929">肇庆-01</option>
                                 </select>
                             </div>
                             <div style="float:left;text-indent:1em">
-                                <label>sku:</label>
+                                <label>sku：</label>
                                 <input name="goods-sn">
                                 <label>(不填则全部配货)</label>
                             </div>
                             <div style="text-indent:1em">
-                                <label>物流ID:</label>
+                                <label>物流ID：</label>
                                 <input name="express-id">
                             </div>
                             <br>

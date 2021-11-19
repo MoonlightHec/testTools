@@ -57,25 +57,30 @@
       "cmd": "php /data/www/devel/oms/daemon/picking/picking_order_to_wms.php -o {}",
       "comment": "同步配货单到wms --李军"
     },
-    "同步soa订单": {
+    "接收soa订单": {
       "desc": "接收soa订单",
-      "cmd": "flock -xn /tmp/MQ_OrderControllerZF.lock -c 'php /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {}'",
-      "comment": "同步soa订单 --李军"
+      "cmd": "php /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {}",
+      "comment": "接收soa订单"
     },
-    "同步soa付款单": {
+    "接收soa付款单": {
       "desc": "接收soa付款单",
       "cmd": "php /data/www/devel/oms/daemon/interface_mq/soa/MQ_IntegratedPaymentController.php",
-      "comment": "同步soa付款单 --李军"
+      "comment": "接收soa付款单"
     },
-    "退款到原支付": {
+    "推送退款请求给soa": {
       "desc": "推送退款请求给soa type【AWX:826】",
-      "cmd": "flock -xn /tmp/wos_PushToWos.lock -c 'php /data/www/devel/oms/daemon/refund/auto_common_refund.php --payment_type {}'",
+      "cmd": "php /data/www/devel/oms/daemon/refund/auto_common_refund.php --payment_type {}",
       "comment": "推送退款请求给soa --李军"
     },
     "退款到电子钱包": {
       "desc": "推送退款请求给soa apply_sn:退款申请编号",
       "cmd": "php /data/www/devel/oms/daemon/wallet/sync_wallet_refund_to_soa.php --apply_sn {}",
       "comment": "推送电子钱包退款请求给soa --李军"
+    },
+    "电子钱包提现": {
+      "desc": "电子钱包提现",
+      "cmd": "php /data/www/devel/oms/daemon/withdraw/AutoWithdraw/{}.php",
+      "comment": "电子钱包提现"
     },
     "地址异常生成电联工单": {
       "desc": "地址异常生成电联工单",
@@ -130,6 +135,11 @@
       "desc": "根据邮件队列生成ticket并发送给用户",
       "cmd": "/data/www/devel/sms/daemon/run_monitor.sh ticket/auto_generate_ticket_email_queue.php",
       "comment": "主动去信队列生成ticket --李军"
+    },
+    "send_reply_support": {
+      "desc": "同步回复信息到支持中心",
+      "cmd": "/data/www/devel/sms/daemon/run_monitor.sh  ticket/auto_check_three_days_ticket_to_send_notice.php",
+      "comment": "同步回复信息到支持中心"
     }
   }
 }

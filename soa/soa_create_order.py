@@ -13,10 +13,9 @@ import pika
 import requests
 from flask import json
 
-
 # 获取当前文件绝对路径
 from app.log.mLogger import logger
-from soa.soa_create_order_info import SoaOrderInfo
+from soa.config import gateway_config
 from tools.DbTools import DbTools
 
 db_path = os.path.dirname(os.path.abspath(__file__))
@@ -31,7 +30,7 @@ def get_address(country_name):
 
 def get_currency_rate(currency_code):
     # 获取汇率
-    db = DbTools('PAY')
+    db = DbTools('SOA')
     sql = "SELECT currency_rate FROM pay_currency_rate WHERE site_code='ZF' AND currency_code ='%s';"
     cursor = db.cursor
     cursor.execute(sql % currency_code)
@@ -51,6 +50,8 @@ def deal_string(*args):
 
 class SoaCreateOrder:
     def __init__(self, order_info):
+        self.env = order_info.env
+        self.url = '{}/gateway/'.format(gateway_config[order_info.env]['url'])
         self.price = order_info.price
         self.currency_code = order_info.currency_code
         self.currency_rate = get_currency_rate(order_info.currency_code)
@@ -170,7 +171,6 @@ class SoaCreateOrder:
         创建订单
         :return:
         """
-        url = 'http://10.40.2.62:2087/gateway/'
         headers = {"Content-Type": "application/json"}
         data = {
             "header": {
@@ -178,11 +178,11 @@ class SoaCreateOrder:
                 "method": "checkout",
                 "domain": "",
                 "version": "1.0.0",
-                "tokenId": "487d842de4e1c9b9c99ac868c7af15a4"
+                "tokenId": gateway_config[self.env]['token']
             },
             "body": self.body
         }
-        response = requests.post(url=url, headers=headers, json=data)
+        response = requests.post(url=self.url, headers=headers, json=data)
         res_body = response.json()['body']
         if res_body:
             json_body = json.loads(res_body)
@@ -287,7 +287,7 @@ class SoaCreateOrder:
             "order_class": "0",
             "coupon_sign": 0
         }
-        with open(f"{db_path}/resource/soa_order_info.json", 'w', encoding='utf-8') as write_order:
+        with open(f"{db_path}/resource/json/soa_order_info.json", 'w', encoding='utf-8') as write_order:
             json.dump(origin_order_info, write_order)
 
 
@@ -307,21 +307,22 @@ def push_to_oms(payment):
             credentials=pika.PlainCredentials('oms_test', 'oms_test')
         )
     )
-    # 创建一个 AMQP 信道（Channel）,建造一个大邮箱，隶属于这家邮局的邮箱
+    # 创建一个 AMQP 信道（Channel）
     channel = connection.channel()
     # 声明消息队列firstTester，消息将在这个队列传递，如不存在，则创建
     channel.queue_declare(queue='orderInfo_OMS')
-    # 向队列插入数值 routing_key的队列名为firstTester，body 就是放入的消息内容，exchange指定消息在哪个队列传递，这里是空的exchange但仍然能够发送消息到队列中，因为我们使用的是我们定义的空字符串“”exchange（默认的exchange）
-    channel.basic_publish(exchange='', routing_key='orderInfo_OMS', body=message)
+    # 向队列插入数值 routing_key的队列名为orderInfo_OMS，body 就是放入的消息内容，exchange指定消息在哪个队列传递，这里是空的exchange但仍然能够发送消息到队列中，因为我们使用的是我们定义的空字符串“”exchange（默认的exchange）
+    channel.basic_publish(exchange='WEB_ZF', routing_key='orderInfo_OMS', body=message)
     # 关闭连接
     connection.close()
 
 
 if __name__ == '__main__':
-    order_info = SoaOrderInfo()
-    order_info.country_name = "德国"
-    order_info.currency_code = "EUR"
-    order_info.price = 50
-    order_info.site_code = "ZF"
-    get_soa_order = SoaCreateOrder(order_info)
-    print(get_soa_order.create_order())
+    # order_info = SoaOrderInfo()
+    # order_info.country_name = "德国"
+    # order_info.currency_code = "EUR"
+    # order_info.price = 50
+    # order_info.site_code = "ZF"
+    # get_soa_order = SoaCreateOrder(order_info)
+    # print(get_soa_order.create_order())
+    push_to_oms('PAYPAL')

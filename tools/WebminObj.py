@@ -110,7 +110,7 @@ class WebminObj:
 
 def run_oms():
     """
-    # 同步soa订单
+    # 接收soa订单
     # 地址异常生成电联工单
     # 推送异常工单到wos
     # 退款到原支付 param：【826:WAX_CC】
@@ -123,7 +123,7 @@ def run_oms():
     oms_script = WebminObj(app_name='oms')
     order_sn = 'U2111051636074754'
     try:
-        oms_script.run_script('匹配订单', 45, order_sn)
+        oms_script.run_script('shipping_order')
         # oms_script.run_script('推送异常工单到wos')
         # oms_script.run_script('推送邮件队列列表到SMS', 'ticket_receive')
     except IndexError:
@@ -134,6 +134,7 @@ def run_sms():
     """
     # 发送邮件：send_email
     # 生成ticket并发送：auto_generate_ticket
+    # TK回复消息推送到支持中心：send_reply_support
     """
     sms_script = WebminObj(app_name='sms')
     order_sn = 'hgfoahwou445 '

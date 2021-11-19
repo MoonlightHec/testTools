@@ -1,0 +1,18 @@
+{% extends "soa.html" %}
+
+{% block function %}
+    <div>
+        <form action="/soa/soa_gateway/after_risk" method="POST">
+            <div>事后风控：
+                <br>
+                <label>pay_sn：</label>
+                <input name="pay-sn">
+                <input type="submit" value="确定">
+            </div>
+            <div>
+                {{ after_risk_result }}
+            </div>
+            <hr/>
+        </form>
+    </div>
+{% endblock %}
