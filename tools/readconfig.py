@@ -30,7 +30,10 @@ class ReadConfig:
         :param section:
         :return:
         """
-        return self.cf.options(self.section)
+        try:
+            return self.cf.options(self.section)
+        except configparser.NoSectionError:
+            print('Section：{}不存在'.format(self.section))
 
     def get_items(self):
         """
@@ -38,7 +41,11 @@ class ReadConfig:
         :param section:
         :return:
         """
-        return self.cf.items(self.section)
+
+        try:
+            return self.cf.items(self.section)
+        except configparser.NoSectionError:
+            print('Section：{}不存在'.format(self.section))
 
     def get_value(self, key):
         """
@@ -47,12 +54,17 @@ class ReadConfig:
         :param key: 想要获取值的key
         :return:
         """
-        return self.cf.get(self.section, key)
+        try:
+            return self.cf.get(self.section, key)
+        except configparser.NoSectionError:
+            print('Section：{}不存在'.format(self.section))
+        except configparser.NoOptionError:
+            print('Option：{}不存在'.format(key))
 
 
 if __name__ == '__main__':
-    rc = ReadConfig("/config.ini", "RabbitMq_OMS")
+    rc = ReadConfig("/db_config.ini", "OMS")
     print(rc.get_secs())
     print(rc.get_options())
     print(rc.get_items())
-    print(rc.get_value("host"))
+    print(rc.get_value("host1"))

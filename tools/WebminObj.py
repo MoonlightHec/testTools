@@ -75,7 +75,7 @@ class WebminObj:
         with open(f'{self.absolute_path}/resource/webmin_script_data.json', 'r', encoding='utf-8') as data_stream:
             self.data = json.load(data_stream)
         # 获取要执行的脚本参数
-        with open(f'{self.absolute_path}./resource/webmin_args.json', 'r', encoding='utf8') as params_stream:
+        with open(f'{self.absolute_path}/resource/webmin_args.json', 'r', encoding='utf8') as params_stream:
             self.request_info = json.load(params_stream)[app_name]
 
     def run_script(self, script_name, *args):
@@ -101,7 +101,7 @@ class WebminObj:
             print("\n----------------------------开始执行脚本----------------------------")
             exec_res = requests.get(url=execute_url, headers=self.headers, verify=False)
             print(exec_res.text)
-            with open(f'{self.absolute_path}./resource/webmin_script_result.html', 'w', encoding='utf-8') as fd:
+            with open(f'{self.absolute_path}/resource/webmin_script_result.html', 'w', encoding='utf-8') as fd:
                 fd.write(exec_res.text)
             return exec_res.text
         else:

@@ -5,11 +5,15 @@
 # @File : config.py
 # @desc :
 """
-# ip地址
-from flask import logging
 
-host = {
-    'ip': '10.8.34.218',
-    'port': '8081'
-}
+import configparser
+import os
+
+
+# 配置环境ip地址 mac com
+cf = configparser.ConfigParser()
+root_dir = os.path.dirname(os.path.abspath(__file__))
+cf.read(f'{root_dir}/config.ini', encoding='utf-8')
+
+host = dict(cf.items('mac'))
 host_url = f"http://{host['ip']}:{host['port']}"

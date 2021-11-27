@@ -24,16 +24,22 @@ window.defaultStatus="oms logged into Webmin 1.810 on siyouyun-prod-web-01006003
 </td>
 <td id='headln2c' align=center width=70%><font size=+2>执行自动作业</font></td>
 <td id='headln2r' width=15% valign=top align=right></td></tr></table>
-<p>命令 <tt>flock -xn /tmp/wos_PushToWos.lock -c &#39;php /data/www/devel/oms/daemon/wos/question/PushToWos.php&#39;</tt> 的输出结果…<p>
-<pre>:任务参数: null
-:任务参数(server): [&quot;\/data\/www\/devel\/oms\/daemon\/wos\/question\/PushToWos.php&quot;]
-:SQL:[{&quot;query&quot;:&quot;select * from `iq_wos_question_sync` where `sync_status` in (?, ?) and `sync_count` &lt;&#61; ? order by `sync_count` asc, `update_time` asc limit 100&quot;,&quot;bindings&quot;:[2,0,10],&quot;time&quot;:1.35}]
-:扫描到 1 条数据
-:将要推送:[{&quot;iqId&quot;:828,&quot;order_sn&quot;:&quot;ZZ2111260343257756&quot;,&quot;variable_sn&quot;:&quot;AU20211126205241257756&quot;,&quot;order_from_id&quot;:&quot;33&quot;,&quot;department_id&quot;:&quot;42&quot;,&quot;desc&quot;:&quot;&quot;,&quot;oms_question_id&quot;:&quot;90&quot;,&quot;oms_question_type_id&quot;:&quot;1&quot;,&quot;oms_question_create_time&quot;:&quot;2021-11-26 20:52:41&quot;,&quot;oms_question_create_user&quot;:&quot;rosegal_pc&quot;,&quot;category_id&quot;:&quot;3&quot;,&quot;unique_exception_uid&quot;:&quot;875282a22de4828afca0ecbf90062f8d&quot;,&quot;extra&quot;:{&quot;reason1&quot;:&quot;0&quot;,&quot;reason2&quot;:&quot;0&quot;,&quot;apply_remark&quot;:&quot;&quot;,&quot;address_is_change&quot;:1,&quot;order_diff&quot;:0,&quot;apply_source&quot;:&quot;1&quot;,&quot;apply_user&quot;:&quot;rosegal_pc&quot;},&quot;customer_name&quot;:&quot;Gint2 Ju2&quot;,&quot;gross_profit_rate&quot;:&quot;37.95&quot;,&quot;payment_type&quot;:&quot;228&quot;,&quot;oms_created_at&quot;:&quot;2021-11-26 17:43:25&quot;,&quot;receive_country&quot;:&quot;GB&quot;,&quot;order_amount&quot;:&quot;21.50&quot;,&quot;order_shop_type&quot;:0}]
-:推送:[{&quot;iqId&quot;:828,&quot;order_sn&quot;:&quot;ZZ2111260343257756&quot;,&quot;variable_sn&quot;:&quot;AU20211126205241257756&quot;,&quot;order_from_id&quot;:&quot;33&quot;,&quot;department_id&quot;:&quot;42&quot;,&quot;desc&quot;:&quot;&quot;,&quot;oms_question_id&quot;:&quot;90&quot;,&quot;oms_question_type_id&quot;:&quot;1&quot;,&quot;oms_question_create_time&quot;:&quot;2021-11-26 20:52:41&quot;,&quot;oms_question_create_user&quot;:&quot;rosegal_pc&quot;,&quot;category_id&quot;:&quot;3&quot;,&quot;unique_exception_uid&quot;:&quot;875282a22de4828afca0ecbf90062f8d&quot;,&quot;extra&quot;:{&quot;reason1&quot;:&quot;0&quot;,&quot;reason2&quot;:&quot;0&quot;,&quot;apply_remark&quot;:&quot;&quot;,&quot;address_is_change&quot;:1,&quot;order_diff&quot;:0,&quot;apply_source&quot;:&quot;1&quot;,&quot;apply_user&quot;:&quot;rosegal_pc&quot;},&quot;customer_name&quot;:&quot;Gint2 Ju2&quot;,&quot;gross_profit_rate&quot;:&quot;37.95&quot;,&quot;payment_type&quot;:&quot;228&quot;,&quot;oms_created_at&quot;:&quot;2021-11-26 17:43:25&quot;,&quot;receive_country&quot;:&quot;GB&quot;,&quot;order_amount&quot;:&quot;21.50&quot;,&quot;order_shop_type&quot;:0}]
-:返回结果:{&quot;code&quot;:0,&quot;message&quot;:&quot;success&quot;,&quot;data&quot;:[]}
-:同步成功
-</pre>
+<p>命令 <tt>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php  45  --order_sn U2111271638000523</tt> 的输出结果…<p>
+<pre>PHP Strict Standards:  Declaration of Finance_Model_ExcessLimit::save() should be compatible with Oms_Model_Base::save() in /data/www/devel/oms/Apps/finance/models/ExcessLimit.php on line 128
+
+Strict Standards: Declaration of Finance_Model_ExcessLimit::save() should be compatible with Oms_Model_Base::save() in /data/www/devel/oms/Apps/finance/models/ExcessLimit.php on line 128
+
+订单:U2111271638000523:付款单(source:4):20211118144438211127160951,原汇率为:1,usd 金额为:4.2, 本币金额为: 4.20
+
+        将要更新的信息:array (
+  &#39;order_sn&#39; &#61;&gt; &#39;U2111271638000523&#39;,
+  &#39;usd_rate&#39; &#61;&gt; 1,
+  &#39;total_us&#39; &#61;&gt; 4.20000000000000017763568394002504646778106689453125,
+  &#39;matched_status&#39; &#61;&gt; 2,
+  &#39;matched_time&#39; &#61;&gt; &#39;2021-11-27 16:10:30&#39;,
+  &#39;matched_count&#39; &#61;&gt; 1,
+  &#39;matched_result&#39; &#61;&gt; &#39;匹配成功&#39;,
+)保存成功</pre>
 </div><p>
 <a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>
 &nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业</a>
