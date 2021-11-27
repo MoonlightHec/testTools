@@ -9,6 +9,8 @@
 import requests
 from flask import json
 
+from tools.encrypt import Encrypt
+
 
 class Pacypay:
     def __init__(self):
@@ -57,7 +59,7 @@ class Pacypay:
         for i in sorted(data):
             sign += data[i]
         sign += '56243b13b9fa4156a6c687641343e362'
-        sign = self.sha256(sign)
+        sign = Encrypt(sign).sha256()
 
         url = "http://10.40.2.52:8182/pacypay/notify"
         headers = {"Content-Type": "application/json"}
@@ -69,5 +71,5 @@ class Pacypay:
 
 if __name__ == '__main__':
     pay_cc = Pacypay()
-    pay_cc.get_pay_info('P211103005378141404WCN')
-    # pay_cc.run_refunds(pay_sn='P211103005378141404WCN', refund_amount='0.15', amount='38.11', transaction_id='2167211131414638182')
+    pay_cc.get_pay_info('L2111090334461479')
+    pay_cc.run_refunds(pay_sn='L2111090334461479', refund_amount='141.78', amount='141.78', transaction_id='2167211191735384337')

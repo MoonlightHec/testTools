@@ -5,6 +5,8 @@
 # @File : Airwallex.py
 # @desc :
 """
+import time
+
 import requests
 from flask import json
 
@@ -19,7 +21,7 @@ class Airwallex:
         }
         self.client = {
             'clientId': '4OuJUnXeQuGF9jZuEhl8-Q',
-            'apiKey': 'df2bc288be96410ef540d16290f00d67761d342af8f9774845d26c5428c72644e99e44ad86f89e32d7ad60b01a622ed1',
+            'apiKey': '6af583d04f8fdd4a1537460093b07d974fc340f0c787ba148d8d2d1785bb69c89078622c2ea677b9862887fb2f0ce91e',
         }
         self.headers = {
             "Authorization": "Bearer {}".format(self.login()),
@@ -37,16 +39,34 @@ class Airwallex:
         token = res.json().get('token')
         return token
 
-    def get_payment(self, transaction_id):
+    def get_payment(self, payment_intent_id):
         """
         查询支付记录
-        :param transaction_id:
+        :param payment_intent_id:
         :return:
         """
-        url = '{}/api/v1/pa/payment_intents/{}'.format(self.allDomains['paDomain'], transaction_id)
-        headers = self.headers
-        res = requests.get(url, headers=headers)
+        url = '{}/api/v1/pa/payment_intents/{}'.format(self.allDomains['paDomain'], payment_intent_id)
+        res = requests.get(url, headers=self.headers)
         self.preview(res)
+
+    def create_refunds(self, payment_intent_id='', amount=0):
+        """
+        向第三方请求退款
+        :param amount:
+        :param payment_intent_id:
+        :return: 登录不上，还没调试过
+        """
+        url = '{}/api/v1/pa/refunds/create'.format(self.allDomains['paDomain'])
+        params = {
+            "payment_intent_id": payment_intent_id,
+            "reason": "Return good",
+            "amount": amount,
+            "request_id": int(time.time())
+        }
+        res = requests.get(url, headers=self.headers, params=params)
+        if res.status_code == 201:
+            print(res.json())
+            return res
 
     def get_refunds(self, payment_intent_id):
         """
@@ -107,11 +127,12 @@ class Airwallex:
 
 
 if __name__ == '__main__':
-    intent_id = 'int_hkdm8z8bkg2msldx6sy'
-    awx_pay_sn = 'U2110102021599653'
+    intent_id = 'int_hkdmgdk7xg4la7116ws'
+    awx_pay_sn = 'U2111260125292421'
     refund_sn = 'B210923013287182905DVI'
     awx_cc = Airwallex()
     # awx_cc.get_payment(intent_id)
-    print(awx_cc.preview(awx_cc.get_refunds(intent_id)))
     # result='FAILED',result='SUCCEEDED'
     # awx_cc.run_refunds(payment_intent_id=intent_id, result='SUCCEEDED')
+    print(awx_cc.preview(awx_cc.get_refunds(intent_id)))
+    awx_cc.create_refunds(intent_id,0.99)

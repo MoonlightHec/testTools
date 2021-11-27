@@ -37,7 +37,7 @@ if __name__ == '__main__':
     select_field_list = ['id', 'parent_order_sn', 'pay_sn', 'site_code', 'pay_status', 'channel_code', 'transaction_id','3ds_status']
     sql_field = {
         'field': 'parent_order_sn',
-        'value': 'ZP2111170521030309'
+        'value': 'U2111260125292421'
     }
     pay_infos = pay.real_select(select_field=select_field_list, where_field=sql_field)
     print('--------------------------------------------')

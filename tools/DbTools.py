@@ -5,10 +5,8 @@
 # @File : DbTools.py
 # @desc :
 """
-import os
 
 import pymysql
-from flask import json
 
 from app.log.mLogger import logger
 from tools.readconfig import ReadConfig
@@ -24,6 +22,19 @@ class DbTools:
         # port转化成int型
         db_config['port'] = int(db_config['port'])
         self.connect = pymysql.connect(**db_config)
+        """
+        使用上面的写法更简洁
+        （**）会把接收到的参数存入一个字典
+        在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。
+        self.connect = pymysql.connect(
+            host=db_config['host'],
+            port=db_config['port'],
+            user=db_config['user'],
+            password=db_config['password'],
+            db=db_config['db'],
+            charset=db_config['charset']
+        )
+        """
         self.cursor = self.connect.cursor()
 
     def __del__(self):
@@ -39,8 +50,8 @@ class DbTools:
 
 
 if __name__ == '__main__':
-    db = DbTools('plm')
-    slq = "SELECT * FROM t_sys_user WHERE id = '%s'"
-    s = db.execute_sql(slq, 27228)
+    db = DbTools('iss')
+    slq = "SELECT * FROM iss_1.biz_base_info LIMIT 1"
+    s = db.execute_sql(slq)
     del db
     print(s)

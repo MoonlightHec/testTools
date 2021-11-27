@@ -5,28 +5,22 @@
 # @File : plm.py
 # @desc :
 """
-import requests
+import inspect
+import os
+
+
+def f2():
+    return inspect.stack()
+
+
+def f1():
+    return f2()
+
 
 if __name__ == '__main__':
-    url = 'http://plm.hqygou.com:8088/fabric/complete/query'
-    headers = {
-        "PLM-TOKEN": "30747237757B48918942994E31B96D8C"
-    }
-    data = {
-        "offset": 1,
-        "limit": 20,
-        "condition": {
-            "fabricApplyNumber": "",
-            "fabricBigTypeCode": "",
-            "fabricName": "",
-            "fabricYearCode": "",
-            "fabricQuarterCode": "",
-            "createDate": "",
-            "dealStatus": "",
-            "status": "",
-            "startDate": "",
-            "createUser": "",
-            "fabricDeveloper": "李翠华"
-        }
-    }
-    res = requests.post(url=url, headers=headers, json=data)
+    frame1 = f2()
+    frame2 = inspect.stack()
+    # 获取当前文件名
+    file_path = frame2[0][1]
+    file_name = os.path.basename(file_path)
+    print(file_name)

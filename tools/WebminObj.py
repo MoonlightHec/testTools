@@ -123,7 +123,7 @@ def run_oms():
     oms_script = WebminObj(app_name='oms')
     order_sn = 'U2111051636074754'
     try:
-        oms_script.run_script('shipping_order')
+        oms_script.run_script('接收soa订单',45)
         # oms_script.run_script('推送异常工单到wos')
         # oms_script.run_script('推送邮件队列列表到SMS', 'ticket_receive')
     except IndexError:

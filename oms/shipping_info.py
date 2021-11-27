@@ -9,15 +9,16 @@ import pika
 
 from tools.DbTools import DbTools
 from tools.format import Format
+from tools.myRabbitMQ import RabbitMQ
 
 if __name__ == '__main__':
-    order_sn = 'U2111161637030019'
+    order_sn = 'U2111171637129703'
     # 查询配货单号
     sql = "SELECT order_number_new FROM o_oms_order_picking_info WHERE order_sn ='%s';"
     db = DbTools('OMS')
     order_number_new = db.execute_sql(sql, order_sn)[0][0]
     del db
-
+    # php序列化
     shipping_info = '[{"outhouse":[{' \
                     f'"order_number_new":"{order_number_new}",' \
                     f'"tracking_number":"40{order_sn[2:]}",' \
@@ -32,24 +33,15 @@ if __name__ == '__main__':
     shipping_format = Format(shipping_info)
     message = shipping_format.serialize()
 
+    """
     # 推送到MQ
-    connection = pika.BlockingConnection(
-        # pika.ConnectionParameters(
-        #     host='10.40.6.89',
-        #     port=5672,
-        #     credentials=pika.PlainCredentials('oms_test', 'oms_test')
-        # )
-        pika.ConnectionParameters(
-            host='127.0.0.1',
-            port=5672,
-            credentials=pika.PlainCredentials('guest', 'guest')
-        )
-    )
+    connection = RabbitMQ('oms').get_connection()
     # 创建一个 AMQP 信道（Channel）
     channel = connection.channel()
-    # 声明消息队列firstTester，消息将在这个队列传递，如不存在，则创建
+    # 声明消息队列orderInfo_OMS，消息将在这个队列传递，如不存在，则创建
     channel.queue_declare(queue='orderInfo_OMS')
     # 向队列插入数值 routing_key的队列名为orderInfo_OMS，body 就是放入的消息内容，exchange指定消息在哪个队列传递，这里是空的exchange但仍然能够发送消息到队列中，因为我们使用的是我们定义的空字符串“”exchange（默认的exchange）
     channel.basic_publish(exchange='', routing_key='shippingInfo_OMS', body=message)
     # 关闭连接
     connection.close()
+    """

@@ -59,7 +59,7 @@
     },
     "接收soa订单": {
       "desc": "接收soa订单",
-      "cmd": "php /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {}",
+      "cmd": "flock -xn /tmp/MQ_OrderControllerZF.lock -c 'php /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {}'",
       "comment": "接收soa订单"
     },
     "接收soa付款单": {
