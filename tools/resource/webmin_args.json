@@ -116,6 +116,11 @@
       "desc": "消费wms发货数据mq",
       "cmd": "php /data/www/devel/oms/daemon/interface_mq/wms/MQ_ShippingOrderController.php",
       "comment": "消费wms发货数据mq"
+    },
+    "check_prepare_info": {
+      "desc": "重新获取wms发货数据",
+      "cmd": "php /data/www/devel/oms/daemon/picking/auto_check_prepare_is_shipped.php",
+      "comment": "重新获取wms发货数据"
     }
   },
   "sms": {
@@ -140,6 +145,20 @@
       "desc": "同步回复信息到支持中心",
       "cmd": "/data/www/devel/sms/daemon/run_monitor.sh  ticket/auto_check_three_days_ticket_to_send_notice.php",
       "comment": "同步回复信息到支持中心"
+    }
+  },
+  "lms": {
+    "config": {
+      "idx": 240,
+      "user": "www",
+      "Referer": "https://10.60.43.164:8100/cron/edit_cron.cgi",
+      "save_url": "https://10.60.43.164:8100/cron/save_cron.cgi",
+      "execute_url": "https://10.60.43.164:8100/cron/exec_cron.cgi?idx={}"
+    },
+    "更新箱子状态": {
+      "desc": "更新箱子状态",
+      "cmd": "cd /data/www/devel/lms && php artisan update:orderStatusBox",
+      "comment": "更新箱子状态"
     }
   }
 }

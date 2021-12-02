@@ -11,19 +11,31 @@ import requests
 from flask import json
 
 # 禁用安全警告信息；requests忽略ssl证书后，控制台不再输出警告信息
+from tools.readconfig import ReadConfig
+
 requests.packages.urllib3.disable_warnings()
 
 
-def get_headers(url, data):
+def get_headers(app_name):
     """
     获取headers
-    :param url:
-    :param data:
+    :param app_name:
     :return:
     """
     headers = {
         "Cookie": "testing=1; sid=x"
     }
+
+    # 读取webmin登陆配置文件
+    rc = ReadConfig("/webmin_config.ini", app_name.upper())
+    url = rc.get_value("url")
+    data = {
+        "page": "/",
+        "user": rc.get_value("user"),
+        "pass": rc.get_value("password"),
+        "save": 1
+    }
+
     # 获取cookies
     res = requests.post(url=url, headers=headers, data=data, verify=False, allow_redirects=False)
     cookiejar = res.cookies
@@ -32,54 +44,24 @@ def get_headers(url, data):
     return headers
 
 
-def get_oms_webmin_headers():
-    """
-    获取oms带cookies的headers
-    :return:
-    """
-    url = 'https://10.60.34.197:8100/session_login.cgi'
-    data = {
-        "page": "/",
-        "user": "oms",
-        "pass": "aTb8R3Rm2G9",
-        "save": 1
-    }
-    return get_headers(url, data)
-
-
-def get_sms_webmin_headers():
-    """
-    获取sms带cookies的headers
-    :return:
-    """
-    url = 'https://10.60.48.185:8100/session_login.cgi'
-    data = {
-        "page": "/",
-        "user": "www",
-        "pass": "9z4BXFjt3A4Kcg==",
-    }
-    return get_headers(url, data)
-
-
 class WebminObj:
     def __init__(self, app_name='oms'):
-        switcher = {
-            'oms': get_oms_webmin_headers,
-            'sms': get_sms_webmin_headers,
-        }
-        app_name = app_name.lower()
-        self.headers = switcher.get(app_name)()
 
+        self.headers = get_headers(app_name)
         # 获取脚本通用参数
         self.absolute_path = os.path.dirname(os.path.abspath(__file__))
         with open(f'{self.absolute_path}/resource/webmin_script_data.json', 'r', encoding='utf-8') as data_stream:
             self.data = json.load(data_stream)
         # 获取要执行的脚本参数
         with open(f'{self.absolute_path}/resource/webmin_args.json', 'r', encoding='utf8') as params_stream:
-            self.request_info = json.load(params_stream)[app_name]
+            self.request_info = json.load(params_stream)[app_name.lower()]
 
     def run_script(self, script_name, *args):
-        params = self.request_info[script_name.lower()]
+        try:
+            params = self.request_info[script_name.lower()]
+        except KeyError:
+            print("脚本名不存在")
+            return "脚本名不存在"
         self.headers['Referer'] = self.request_info['config']['Referer']
         self.data['idx'] = self.request_info['config']['idx']
         self.data['user'] = self.request_info['config']['user']
@@ -91,10 +73,12 @@ class WebminObj:
         try:
             self.data['cmd'] = params['cmd'].format(*args)
         except IndexError:
-            return "参数不对"
+            print("参数个数错误")
+            return "参数个数错误"
         # 禁止重定向，否则重定向到/cron/exec_cron.cgi后，执行会因为没有cookie导致执行脚本报权限不足
         print("\n----------------------------开始保存脚本----------------------------")
-        save_res = requests.get(url=save_url, headers=self.headers, params=self.data, verify=False, allow_redirects=False)
+        save_res = requests.get(url=save_url, headers=self.headers, params=self.data, verify=False,
+                                allow_redirects=False)
         if save_res.status_code == 302:
             print("\n----------------------------保存成功----------------------------")
             # 执行脚本
@@ -122,12 +106,9 @@ def run_oms():
     """
     oms_script = WebminObj(app_name='oms')
     order_sn = 'U2111051636074754'
-    try:
-        oms_script.run_script('接收soa订单',45)
-        # oms_script.run_script('推送异常工单到wos')
-        # oms_script.run_script('推送邮件队列列表到SMS', 'ticket_receive')
-    except IndexError:
-        print("参数个数错误")
+    oms_script.run_script('shipping_order')
+    # oms_script.run_script('推送异常工单到wos')
+    # oms_script.run_script('推送邮件队列列表到SMS', 'ticket_receive')
 
 
 def run_sms():
@@ -138,12 +119,19 @@ def run_sms():
     """
     sms_script = WebminObj(app_name='sms')
     order_sn = 'hgfoahwou445 '
-    try:
-        sms_script.run_script('send_email')
-    except IndexError:
-        print("参数个数错误")
+    sms_script.run_script('send_email')
+
+
+def run_lms():
+    """
+    # 更新箱子状态
+    :return:
+    """
+    lms_script = WebminObj(app_name='lms')
+    lms_script.run_script('更新箱子状态')
 
 
 if __name__ == '__main__':
-    run_oms()
+    # run_oms()
     # run_sms()
+    run_lms()
