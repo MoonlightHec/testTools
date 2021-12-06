@@ -9,18 +9,15 @@ import inspect
 import os
 
 
-def f2():
-    return inspect.stack()
-
-
-def f1():
-    return f2()
+def fun(input_num):
+    str_decimal = str(input_num).split(".")
+    if len(str_decimal[1]) >= 6:
+        decimal = str_decimal[1][:6]
+        result = float(f'{str_decimal[0]}.{decimal}')
+    else:
+        result = input_num
+    return result
 
 
 if __name__ == '__main__':
-    frame1 = f2()
-    frame2 = inspect.stack()
-    # 获取当前文件名
-    file_path = frame2[0][1]
-    file_name = os.path.basename(file_path)
-    print(file_name)
+    print(fun(10.1234534232))

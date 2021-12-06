@@ -35,7 +35,7 @@ def page_not_found(e):
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('505.html'),500
+    return render_template('505.html'), 500
 
 
 if __name__ == '__main__':

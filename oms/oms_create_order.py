@@ -8,12 +8,12 @@
 from app.log.mLogger import logger
 from oms.oms_create_order_info import OmsOrderInfo
 from tools.DbTools import DbTools
-from tools.get_session import login_session
+from tools.get_session import LoginSession
 
 
 class OmsCreateOrder:
     def __init__(self, order_info):
-        self.login = login_session('oms')
+        self.login = LoginSession('oms')
         self.data = {
             'customer_id': order_info.customer_id,
             'order_sn': order_info.order_sn,

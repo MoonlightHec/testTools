@@ -9,7 +9,7 @@ import requests
 
 from app.log.mLogger import logger
 from tools.DbTools import DbTools
-from tools.get_session import login_session
+from tools.get_session import LoginSession
 
 
 class OrderAllProcess:
@@ -76,7 +76,7 @@ class OrderAllProcess:
 
             # 审核付款单
             url = 'http://oms.hqygou.com/finance/payorder/payorderaudit/'
-            login = login_session('oms')
+            login = LoginSession('oms')
             data = {"payment_info_id": payment_info_id, "status": 1}
             return login.session.post(url=url, data=data).json()
         except IndexError:
@@ -97,7 +97,7 @@ class OrderAllProcess:
         question_ids = oms_db.execute_sql(other_sql, self.order_sn)
         # 问题无需处理操作请求接口
         url = "http://oms.hqygou.com/order/process/process"
-        login = login_session('oms')
+        login = LoginSession('oms')
         for question_id in question_ids:
             data = {
                 "order_question_id": question_id[0],
@@ -117,7 +117,7 @@ class OrderAllProcess:
         :return:
         """
         # 获取配货订单信息
-        oms_session = login_session('oms')
+        oms_session = LoginSession('oms')
         order_data_url = "http://oms.hqygou.com/order/picking/getorderjsondata"
         order_data = {
             "order_sn": self.order_sn,

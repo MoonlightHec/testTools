@@ -13,3 +13,5 @@ requests==2.26.0
 urllib3==1.26.7
 Werkzeug==2.0.2
 WTForms==3.0.0
+
+phpserialize~=1.3

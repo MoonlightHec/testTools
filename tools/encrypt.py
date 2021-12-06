@@ -7,9 +7,6 @@
 """
 import hashlib
 
-import phpserialize
-from itsdangerous import Serializer
-
 from app.log.mLogger import logger
 
 

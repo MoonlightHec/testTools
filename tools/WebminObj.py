@@ -106,7 +106,7 @@ def run_oms():
     """
     oms_script = WebminObj(app_name='oms')
     order_sn = 'U2111051636074754'
-    oms_script.run_script('shipping_order')
+    oms_script.run_script('接收soa付款单')
     # oms_script.run_script('推送异常工单到wos')
     # oms_script.run_script('推送邮件队列列表到SMS', 'ticket_receive')
 
@@ -132,6 +132,6 @@ def run_lms():
 
 
 if __name__ == '__main__':
-    # run_oms()
+    run_oms()
     # run_sms()
-    run_lms()
+    # run_lms()
