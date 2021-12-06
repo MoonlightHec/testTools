@@ -88,5 +88,14 @@
     "state": "Western Australia",
     "postalCode": "2060",
     "telephone": "7894511123"
+  },
+  "比利时": {
+    "firstName": "Belgium",
+    "lastName": "比利时",
+    "countryCode": "BE",
+    "countryName": "Belgium",
+    "state": "Liege",
+    "postalCode": "4540",
+    "telephone": "7894561234"
   }
 }

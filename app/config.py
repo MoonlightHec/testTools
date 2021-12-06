@@ -15,5 +15,5 @@ cf = configparser.ConfigParser()
 root_dir = os.path.dirname(os.path.abspath(__file__))
 cf.read(f'{root_dir}/config.ini', encoding='utf-8')
 
-host = dict(cf.items('local'))
+host = dict(cf.items('com'))
 host_url = f"http://{host['ip']}:{host['port']}"

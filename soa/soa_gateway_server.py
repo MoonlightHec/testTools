@@ -17,7 +17,7 @@ def preview(response):
 
 
 class SoaGatewayServer:
-    def __init__(self, env='new'):
+    def __init__(self, env='old'):
         self.env = env
         self.url = '{}/gateway/'.format(gateway_config[env]["url"])
         self.headers = {"Content-Type": "application/json"}
@@ -45,7 +45,7 @@ class SoaGatewayServer:
             "omsId": ""
         }
         response = requests.post(url=self.url, headers=self.headers, json=self.data)
-        logger.info(response.json())
+        logger.info("事后风控调用结果：{}".format(response.json()))
         # if response.json()["header"]["success"]:
         #     return "调用成功"
         return response.json()
