@@ -57,7 +57,8 @@ class OrderAllProcess:
         """
         sites = {
             "ZF": "zaful",
-            "DL": "dresslily"
+            "DL": "dresslily",
+            "RG":"rosegal"
         }
         url = "http://www.pc-{}-master-php5.fpm.egomsl.com/eload_admin/crontab/xcmq/order_to_oms_api.php?order_sn={}".format(sites[site_code], self.order_sn)
         return requests.get(url).text
@@ -163,7 +164,7 @@ class OrderAllProcess:
         # 请求配货
         picking_url = "http://oms.hqygou.com/order/picking/save"
         response = oms_session.session.post(picking_url, picking_data).json()
-        logger.info('配货结果：{}'.format(response))
+        logger.info('{}配货结果：{}'.format(self.order_sn,response))
         return response
 
 
