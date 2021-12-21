@@ -4,10 +4,20 @@
     <div name="functions">
         <div>
             <ol>
+                <li>前提条件：添加sku到oms产品库
+                    <div>
+                        <form action="{{ host }}/oms/allProcess/addSkuOms" target="_top" method="POST">
+                            <label>要添加的sku（英文逗号隔开，已存在会自动去除）：</label>
+                            <input name="sku-list">
+                            <input type="submit" value="添加">
+                        </form>
+                    </div>
+                </li>
+                <hr/>
                 <li>生成订单
                     <div>
                         <div>
-                            1).各网站下单并推到OMS：
+                            1).各网站下单后推到OMS：
                             <div>
                                 <form action="{{ host }}/oms/allProcess/orderFromSite" target="_top" method="POST">
                                     <div>
@@ -178,7 +188,7 @@
                 </li>
                 <hr/>
                 <li>WMS跟踪号补录
-                    <form action="{{ host }}/wms" >
+                    <form action="{{ host }}/wms">
 
                     </form>
 

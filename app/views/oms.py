@@ -94,6 +94,22 @@ def run_webmin():
     return web_script.run_script(*webmin_params)
 
 
+@oms.route('/allProcess/addSkuOms', methods=['GET', 'POST'])
+def add_sku_oms():
+    """
+    添加sku到oms产品库
+    :return:
+    """
+    sku_list = request.form.to_dict()
+    logger.info("要添加到oms的sku:form表单数据 {}".format(sku_list))
+    if sku_list['sku-list']:
+        process = OrderAllProcess('')
+        flash(process.add_sku(sku_list['sku-list']))
+        return redirect(url_for('oms.oms_process'))
+    flash("请输入sku")
+    return redirect(url_for('oms.oms_process'))
+
+
 @oms.route('/allProcess/orderFromSite', methods=['GET', 'POST'])
 def site_push_order():
     """

@@ -43,15 +43,20 @@ class DbTools:
 
     def execute_sql(self, mysql, *args):
         self.cursor.execute(mysql % args)
-        result = self.cursor.fetchall()
         self.connect.commit()
-        logger.info("execute_sql({})影响数据：{}".format(mysql, self.cursor.rowcount))
+        result = self.cursor.rowcount
+        logger.info("execute_sql({}),参数：【{}】影响数据：{}".format(mysql, *args, result))
+        return result
+
+    def query(self, mysql, *args):
+        self.cursor.execute(mysql % args)
+        result = self.cursor.fetchall()
         return result
 
 
 if __name__ == '__main__':
     db = DbTools('iss')
     slq = "SELECT * FROM iss_1.biz_base_info LIMIT 1"
-    s = db.execute_sql(slq)
+    s = db.query(slq)
     del db
     print(s)

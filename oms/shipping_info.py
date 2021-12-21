@@ -16,7 +16,7 @@ if __name__ == '__main__':
     # 查询配货单号
     sql = "SELECT order_number_new FROM o_oms_order_picking_info WHERE order_sn ='%s';"
     db = DbTools('OMS')
-    order_number_new = db.execute_sql(sql, order_sn)[0][0]
+    order_number_new = db.query(sql, order_sn)[0][0]
     del db
     # php序列化
     shipping_info = '[{"outhouse":[{' \

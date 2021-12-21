@@ -59,7 +59,7 @@ class OmsCreateOrder:
         account = 0
         i = 0
         for product in products_info:
-            res = db.execute_sql(sql, product["sku"])
+            res = db.query(sql, product["sku"])
             if res:
                 product_info = {
                     f"products[{i}][0]": product["sku"],
