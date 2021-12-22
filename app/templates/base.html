@@ -8,7 +8,7 @@
 </head>
 {#script脚本#}
 {% block script %}
-{#    <script type="text/javascript" src="../static/js/index.js"></script>#}
+    {#    <script type="text/javascript" src="../static/js/index.js"></script>#}
 {% endblock %}
 
 {#style样式#}
@@ -52,17 +52,22 @@
         <br>
         <hr/>
     </div>
-        {% block flash %}
-        <div>
+    {% block flash %}
+        <div style="">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for msg in messages %}
-                        <dialog open>{{ msg }}</dialog>
+                        <div id="div-message-id">
+                            <dialog open id="flash-message-id">{{ msg }}
+{#                                <button type="button" onclick="close_flash_message();">x</button>#}
+                            </dialog>
+                        </div>
                     {% endfor %}
                 {% endif %}
             {% endwith %}
         </div>
     {% endblock %}
+
 {% endblock %}
 
 {% block model %}

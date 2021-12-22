@@ -39,6 +39,6 @@ def internal_server_error(e):
 
 
 if __name__ == '__main__':
-    # --host=10.8.34.218 --port=8081
+    # --host=10.8.42.152 --port=8081
 
     app.run(host=host['ip'], port=['port'], debug=False)

@@ -1,4 +1,3 @@
-
 function selectSys(btnName) {
     let sysIframeList = document.getElementsByName("sys-iframe")
     sysIframeList.forEach(function (sysIframe) {
@@ -22,4 +21,12 @@ function selectFun() {
             selectedFun.style["display"] = "none"
         }
     })
+}
+
+function close_flash_message() {
+    let messageElement = document.getElementById("flash-message-id").close()
+    let divMessageElement = document.getElementById("div-message-id")
+    messageElement.removeAttribute('open')
+    divMessageElement.style["display"] = "none"
+    messageElement.close()
 }
