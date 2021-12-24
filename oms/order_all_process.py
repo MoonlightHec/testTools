@@ -102,13 +102,15 @@ class OrderAllProcess:
         :param site_code:
         :return:
         """
-        sites = {
-            "ZF": "zaful",
-            "DL": "dresslily",
-            "RG": "rosegal"
+        url_web = "http://www.pc-{}-php5.fpm.egomsl.com/eload_admin/crontab/xcmq/order_to_oms_api.php?order_sn={}"
+        web_branch = {
+            "ZF": "zaful-v1223",
+            "DL": "dresslily-lucky_bag",
+            "RG": "master"
         }
-        url = "http://www.pc-{}-master-php5.fpm.egomsl.com/eload_admin/crontab/xcmq/order_to_oms_api.php?order_sn={}".format(sites[site_code], self.order_sn)
-        return requests.get(url).text
+        requests_url = url_web.format(web_branch[site_code], self.order_sn)
+        logger.info("网站推送订单到oms请求链接：{}".format(requests_url))
+        return requests.get(requests_url).text
 
     def audit_payorder(self):
         """

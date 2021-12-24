@@ -24,8 +24,22 @@ window.defaultStatus="oms logged into Webmin 1.810 on siyouyun-prod-web-01006003
 </td>
 <td id='headln2c' align=center width=70%><font size=+2>执行自动作业</font></td>
 <td id='headln2r' width=15% valign=top align=right></td></tr></table>
-<p>命令 <tt>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php  18  --order_sn L2112210322386734</tt> 的输出结果…<p>
-<pre>没有需要匹配的付款单</pre>
+<p>命令 <tt>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php  18  --order_sn LA2112230418372232</tt> 的输出结果…<p>
+<pre>PHP Strict Standards:  Declaration of Finance_Model_ExcessLimit::save() should be compatible with Oms_Model_Base::save() in /data/www/devel/oms/Apps/finance/models/ExcessLimit.php on line 128
+
+Strict Standards: Declaration of Finance_Model_ExcessLimit::save() should be compatible with Oms_Model_Base::save() in /data/www/devel/oms/Apps/finance/models/ExcessLimit.php on line 128
+
+订单:LA2112230418372232:付款单(source:22):5RM92976AW267932G,原汇率为:1.0000000000,usd 金额为:21.81, 本币金额为: 21.81
+
+        将要更新的信息:array (
+  &#39;order_sn&#39; &#61;&gt; &#39;LA2112230418372232&#39;,
+  &#39;usd_rate&#39; &#61;&gt; &#39;1.0000000000&#39;,
+  &#39;total_us&#39; &#61;&gt; &#39;21.81&#39;,
+  &#39;matched_status&#39; &#61;&gt; 2,
+  &#39;matched_time&#39; &#61;&gt; &#39;2021-12-23 18:21:33&#39;,
+  &#39;matched_count&#39; &#61;&gt; 1,
+  &#39;matched_result&#39; &#61;&gt; &#39;匹配成功&#39;,
+)保存成功</pre>
 </div><p>
 <a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>
 &nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业</a>
