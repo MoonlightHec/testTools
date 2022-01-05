@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/15 16:59 
-# @Author : lijun7 
+# @Author : lijun
 # @File : format.py
 # @desc : 格式化各种数据
 """

@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/15 16:49 
-# @Author : lijun7 
+# @Author : lijun
 # @File : Pacypay.py
 # @desc :
 """
@@ -9,10 +9,10 @@
 import requests
 from flask import json
 
-from tools.encrypt import Encrypt
+from tools.encrypt import sha256
 
 
-class Pacypay:
+class PacyPay:
     def __init__(self):
         self.url = 'https://sandbox-pg.pacypay.com/'
 
@@ -59,7 +59,7 @@ class Pacypay:
         for i in sorted(data):
             sign += data[i]
         sign += '56243b13b9fa4156a6c687641343e362'
-        sign = Encrypt(sign).sha256()
+        sign = sha256(sign)
 
         url = "http://10.40.2.52:8182/pacypay/notify"
         headers = {"Content-Type": "application/json"}
@@ -70,6 +70,7 @@ class Pacypay:
 
 
 if __name__ == '__main__':
-    pay_cc = Pacypay()
+    pay_cc = PacyPay()
     pay_cc.get_pay_info('L2111090334461479')
-    pay_cc.run_refunds(pay_sn='L2111090334461479', refund_amount='141.78', amount='141.78', transaction_id='2167211191735384337')
+    pay_cc.run_refunds(pay_sn='L2111090334461479', refund_amount='141.78', amount='141.78',
+                       transaction_id='2167211191735384337')

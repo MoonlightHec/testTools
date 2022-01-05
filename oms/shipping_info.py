@@ -1,27 +1,30 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/16 17:36 
-# @Author : lijun7 
+# @Author : lijun
 # @File : shipping_info.py
 # @desc : OMS变更发货状态
 """
-import pika
 
 from tools.DbTools import DbTools
 from tools.format import Format
-from tools.myRabbitMQ import RabbitMQ
 
 if __name__ == '__main__':
-    order_sn = 'U2111171637129703'
+    order_sn = 'U2112291640748476'
     # 查询配货单号
     sql = "SELECT order_number_new FROM o_oms_order_picking_info WHERE order_sn ='%s';"
     db = DbTools('OMS')
-    order_number_new = db.query(sql, order_sn)[0][0]
+    order_number_new = db.execute_sql(sql, order_sn)
     del db
+    try:
+        order_number_new = order_number_new[0][0]
+    except IndexError:
+        print("订单未配货")
+        exit()
     # php序列化
     shipping_info = '[{"outhouse":[{' \
                     f'"order_number_new":"{order_number_new}",' \
-                    f'"tracking_number":"40{order_sn[2:]}",' \
+                    f'"tracking_number":"LI{order_sn[2:]}",' \
                     '"transfer_no":null,"express_id":"1530","is_photo":"2","express_code":"CAEXPXH",' \
                     f'"out_warehouse_number":"XH{order_sn[2:]}",' \
                     '"weight":"1.2390","volume_weight":"0.0010","shipping_fee":"18.2980","currency_code":"USD","creator":"fujunjuan","create_time":"2021-07-17 16:07:21",' \

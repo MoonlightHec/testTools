@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/8/26 17:24 
-# @Author : lijun7 
+# @Author : lijun
 # @File : WebminObj.py
 # @desc : webmin脚本顶级类
 """
@@ -103,10 +103,16 @@ def run_oms():
     # 自动去信加入队列
     # 匹配订单
     # 同步配货单到wms
+    # 接收wms发货数据
+
+    # 联合订单:
+    # 1.soa_mq_oms_received
+    # 2.
+    # 3.
     """
     oms_script = WebminObj(app_name='oms')
-    order_sn = 'U2111051636074754'
-    oms_script.run_script('接收soa付款单')
+    order_sn = 'U2112240257259056'
+    oms_script.run_script('soa_mq_oms_received')
     # oms_script.run_script('推送异常工单到wos')
     # oms_script.run_script('推送邮件队列列表到SMS', 'ticket_receive')
 

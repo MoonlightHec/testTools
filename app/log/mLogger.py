@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/2 14:44 
-# @Author : lijun7 
+# @Author : lijun
 # @File : mLogger.py
 # @desc :
 """

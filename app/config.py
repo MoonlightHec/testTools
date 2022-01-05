@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/2 14:47 
-# @Author : lijun7 
+# @Author : lijun
 # @File : config.py
 # @desc :
 """
@@ -15,5 +15,5 @@ cf = configparser.ConfigParser()
 root_dir = os.path.dirname(os.path.abspath(__file__))
 cf.read(f'{root_dir}/config.ini', encoding='utf-8')
 
-host = dict(cf.items('com'))
+host = dict(cf.items('local'))
 host_url = f"http://{host['ip']}:{host['port']}"

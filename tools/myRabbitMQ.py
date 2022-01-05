@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/19 9:56 
-# @Author : lijun7 
+# @Author : lijun
 # @File : MyRabbitMQ.py
 # @desc : 获取MQ
 """

@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/8 18:09 
-# @Author : lijun7 
+# @Author : lijun
 # @File : soa_gateway.py
 # @desc : soa对外部系统gateway接口
 """

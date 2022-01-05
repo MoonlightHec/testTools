@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/8 18:11 
-# @Author : lijun7 
+# @Author : lijun
 # @File : config.py
 # @desc :
 """

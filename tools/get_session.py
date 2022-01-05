@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/10/12 9:32 
-# @Author : lijun7 
+# @Author : lijun
 # @File : get_session.py
 # @desc : 获取应用session
 """
@@ -33,7 +33,8 @@ class LoginSession:
             "plm": self.get_plm_session,
             "oms": self.get_oms_session,
             "wos": self.get_wos_session,
-            "wms": self.get_wms_session
+            "wms": self.get_wms_session,
+            "lms": self.get_lms_session
         }
         switcher.get(app_name.lower())()
 
@@ -100,6 +101,16 @@ class LoginSession:
             print("系统登录失败\n" + check_res.text)
             return
         return self.session
+
+    @staticmethod
+    def get_lms_session():
+        """
+        lms登录是写死的
+        :return:
+        """
+        lms = requests.session()
+        lms.get("http://lms.hqygou.com/api/login")
+        return lms
 
 
 if __name__ == '__main__':

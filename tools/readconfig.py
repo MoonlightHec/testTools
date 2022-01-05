@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/11/19 10:18 
-# @Author : lijun7 
+# @Author : lijun
 # @File : myRabbitMQ.py
 # @desc : 读取配置文件
 """

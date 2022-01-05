@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 """
 # @Time : 2021/8/27 9:10 
-# @Author : lijun7 
+# @Author : lijun
 # @File : DbTools.py
 # @desc :
 """
@@ -14,32 +14,28 @@ from tools.readconfig import ReadConfig
 
 class DbTools:
     def __init__(self, name):
-        # 读取配置文件
-        rc = ReadConfig('/db_config.ini', name.upper())
-        datas = rc.get_items()
-        # 元组转换成字典
-        db_config = dict(datas)
-        # port转化成int型
-        db_config['port'] = int(db_config['port'])
-        self.connect = pymysql.connect(**db_config)
-        """
-        使用上面的写法更简洁
-        （**）会把接收到的参数存入一个字典
-        在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。
-        self.connect = pymysql.connect(
-            host=db_config['host'],
-            port=db_config['port'],
-            user=db_config['user'],
-            password=db_config['password'],
-            db=db_config['db'],
-            charset=db_config['charset']
-        )
-        """
+        self.name = name
+        self.connect = pymysql.connect(**self.read_config())
         self.cursor = self.connect.cursor()
 
+    def read_config(self):
+        # 读取配置文件
+        rc = ReadConfig('/db_config.ini', self.name.upper())
+        datas = rc.get_items()
+        if datas:
+            # 元组转换成字典
+            db_config = dict(datas)
+            # port转化成int型
+            db_config['port'] = int(db_config['port'])
+            return db_config
+
     def __del__(self):
-        self.cursor.close()
-        self.connect.close()
+        try:
+            self.cursor.close()
+            self.connect.close()
+        except AttributeError:
+            logger.info(f"{self.name}数据库未连接成功，无需关闭")
+            return
 
     def execute_sql(self, mysql, *args):
         self.cursor.execute(mysql % args)
@@ -59,4 +55,4 @@ if __name__ == '__main__':
     slq = "SELECT * FROM iss_1.biz_base_info LIMIT 1"
     s = db.query(slq)
     del db
-    print(s)
+    print('我的{name}')
