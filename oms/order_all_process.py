@@ -106,7 +106,7 @@ class OrderAllProcess:
         web_branch = {
             "ZF": "zaful-v1223",
             "DL": "dresslily-lucky_bag",
-            "RG": "master"
+            "RG": "rosegal-master"
         }
         requests_url = url_web.format(web_branch[site_code], self.order_sn)
         logger.info("网站推送订单到oms请求链接：{}".format(requests_url))
