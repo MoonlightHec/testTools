@@ -9,9 +9,6 @@ from tools.readconfig import ReadConfig
 
 
 class DB:
-    """
-    使用上下文管理器连接数据库
-    """
 
     def __init__(self, name):
         self.name = name
@@ -27,6 +24,7 @@ class DB:
             db_config = dict(datas)
             # port转化成int型
             db_config['port'] = int(db_config['port'])
+            # 配置以字典形式返回数据
             db_config['cursorclass'] = pymysql.cursors.DictCursor
             return db_config
 
@@ -54,6 +52,7 @@ class DB:
         if self.cursor.rowcount:
             return True
 
+    # 实现上下文管理器协议，可以使用with
     def __enter__(self):
         return self
 

@@ -141,6 +141,16 @@
       "cmd": "/data/www/devel/sms/daemon/run_monitor.sh ticket/auto_generate_ticket_email_queue.php",
       "comment": "主动去信队列生成ticket --李军"
     },
+    "auto_send_ticket": {
+      "desc": "TK发送",
+      "cmd": "/data/www/devel/sms/daemon/run_monitor.sh ticket/auto_send_ticket.php",
+      "comment": "TK发送 --李军"
+    },
+    "send_station_queue": {
+      "desc": "发送站内信队列数据",
+      "cmd": "/data/www/devel/sms_support/daemon/run_monitor.sh mail/send_mail_queue.php",
+      "comment": "发送站内信队列数据 --李军"
+    },
     "send_reply_support": {
       "desc": "同步回复信息到支持中心",
       "cmd": "/data/www/devel/sms/daemon/run_monitor.sh  ticket/auto_check_three_days_ticket_to_send_notice.php",

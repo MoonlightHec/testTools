@@ -30,7 +30,7 @@ if __name__ == '__main__':
                          '3ds_status']
     sql_field = {
         'field': 'parent_order_sn',
-        'value': 'UUA2201042058589082'
+        'value': 'U2201191642558045'
     }
     for order in PayGateway.real_query(select_field=select_field_list, where_field=sql_field):
         print(order)

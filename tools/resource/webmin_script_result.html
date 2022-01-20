@@ -69,36 +69,40 @@ var rowsel = new Array();
 </script>
 <script type='text/javascript' src='/unauthenticated/sorttable.js'></script>
 <meta http-equiv="Content-Type" content="text/html; Charset=UTF-8">
-<title>执行自动作业</title>
+<title>Execute Cron Job</title>
 <script type='text/javascript'>
-window.defaultStatus="oms logged into Webmin 1.810 on siyouyun-prod-web-010060036202.kx (CentOS Linux 7.4.1708)";
+window.defaultStatus="www logged into Webmin 1.810 on sms-testweb (CentOS Linux 6.8)";
 </script>
 </head>
 <body bgcolor=#ffffff link=#376ebd vlink=#376ebd text=#000000     data-pagescroll=true>
 <table class='header' width=100%><tr>
+<<<<<<< HEAD
 <td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module 索引
 </a><br>
+=======
+<td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module Index</a><br>
+>>>>>>> 930940e (iss 库存轨迹)
 </td>
-<td id='headln2c' align=center width=70%><font size=+2>执行自动作业</font></td>
+<td id='headln2c' align=center width=70%><font size=+2>Execute Cron Job</font></td>
 <td id='headln2r' width=15% valign=top align=right></td></tr></table>
-<p>命令 <tt>flock -xn /tmp/MQ_SoaOrderIntoMq1.lock -c &#39;php /data/www/devel/oms/daemon/interface_mq/soa/MQ_SoaOrderIntoMq.php -s U2112240257259056 -n  49&#39;</tt> 的输出结果…<p>
-<pre>\Models\OmsSoa\In\OrderSoaOriginal49Model
-status-3
-total:0
-0
-status-1
-total:0
-0
-status-0
-total:0
-0
+<p>Output from command <tt>/data/www/devel/sms_support/daemon/run_monitor.sh mail/send_mail_queue.php</tt> ..<p>
+<pre>log file: /data/www/devel/sms_support/daemon/../data/log/cron_20220119.log
+/data/www/devel/sms_support/daemon/mail/send_mail_queue.php
+sleep 30
 </pre>
 </div><p>
+<<<<<<< HEAD
 <a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>
 &nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业
 </a>
 &nbsp;|
 &nbsp;<a href="/cron/index.cgi">返回到 自动作业列表
 </a>
+=======
+<a href="edit_cron.cgi?idx=124"><img alt="<-" align="top"src="/images/left.gif"></a>
+&nbsp;<a href="edit_cron.cgi?idx=124">Return to cron job</a>
+&nbsp;|
+&nbsp;<a href="/cron/index.cgi">Return to cron list</a>
+>>>>>>> 930940e (iss 库存轨迹)
 <br>
 </body></html>
