@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 <!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
-<html>g
+<html>
 <head>
 <link rel='stylesheet' type='text/css' href='/unauthenticated/gray-reset-fonts-grids-base.css'>
 <link rel='stylesheet' type='text/css' href='/unauthenticated/gray-virtual-server-style.css' />
@@ -21,88 +20,24 @@ window.defaultStatus="oms logged into Webmin 1.810 on siyouyun-prod-web-01006003
 </head>
 <body bgcolor=#ffffff link=#376ebd vlink=#376ebd text=#000000     data-pagescroll=true>
 <table class='header' width=100%><tr>
-<td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module 索引
-</a><br>
+<td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module 索引</a><br>
 </td>
 <td id='headln2c' align=center width=70%><font size=+2>执行自动作业</font></td>
 <td id='headln2r' width=15% valign=top align=right></td></tr></table>
 <p>命令 <tt>flock -xn /tmp/wos_PushToWos.lock -c &#39;php /data/www/devel/oms/daemon/wos/question/PushToWos.php&#39;</tt> 的输出结果…<p>
 <pre>:任务参数: null
-
 :任务参数(server): [&quot;\/data\/www\/devel\/oms\/daemon\/wos\/question\/PushToWos.php&quot;]
-
 :SQL:[{&quot;query&quot;:&quot;select * from `iq_wos_question_sync` where `sync_status` in (?, ?) and `sync_count` &lt;&#61; ? order by `sync_count` asc, `update_time` asc limit 100&quot;,&quot;bindings&quot;:[2,0,10],&quot;time&quot;:1.29}]
-
 :扫描到 1 条数据
-
-:将要推送:[{&quot;iqId&quot;:935,&quot;order_sn&quot;:&quot;ZZP2201192033514798&quot;,&quot;variable_sn&quot;:&quot;AU20220120103604514798&quot;,&quot;order_from_id&quot;:&quot;33&quot;,&quot;department_id&quot;:&quot;42&quot;,&quot;desc&quot;:&quot;&quot;,&quot;oms_question_id&quot;:&quot;110&quot;,&quot;oms_question_type_id&quot;:&quot;1&quot;,&quot;oms_question_create_time&quot;:&quot;2022-01-20 10:36:04&quot;,&quot;oms_question_create_user&quot;:&quot;rosegal_pc&quot;,&quot;category_id&quot;:&quot;3&quot;,&quot;unique_exception_uid&quot;:&quot;76dff5b73a83701ca8d35f7f1fe8f617&quot;,&quot;extra&quot;:{&quot;reason1&quot;:&quot;0&quot;,&quot;reason2&quot;:&quot;0&quot;,&quot;apply_remark&quot;:&quot;&quot;,&quot;address_is_change&quot;:1,&quot;order_diff&quot;:0,&quot;apply_source&quot;:&quot;1&quot;,&quot;apply_user&quot;:&quot;rosegal_pc&quot;},&quot;customer_name&quot;:&quot;Gint  Ju&quot;,&quot;gross_profit_rate&quot;:&quot;0.00&quot;,&quot;payment_type&quot;:&quot;228&quot;,&quot;oms_created_at&quot;:&quot;2022-01-20 10:33:50&quot;,&quot;receive_country&quot;:&quot;US&quot;,&quot;order_amount&quot;:&quot;43.80&quot;,&quot;order_shop_type&quot;:0}]
-
-:推送:[{&quot;iqId&quot;:935,&quot;order_sn&quot;:&quot;ZZP2201192033514798&quot;,&quot;variable_sn&quot;:&quot;AU20220120103604514798&quot;,&quot;order_from_id&quot;:&quot;33&quot;,&quot;department_id&quot;:&quot;42&quot;,&quot;desc&quot;:&quot;&quot;,&quot;oms_question_id&quot;:&quot;110&quot;,&quot;oms_question_type_id&quot;:&quot;1&quot;,&quot;oms_question_create_time&quot;:&quot;2022-01-20 10:36:04&quot;,&quot;oms_question_create_user&quot;:&quot;rosegal_pc&quot;,&quot;category_id&quot;:&quot;3&quot;,&quot;unique_exception_uid&quot;:&quot;76dff5b73a83701ca8d35f7f1fe8f617&quot;,&quot;extra&quot;:{&quot;reason1&quot;:&quot;0&quot;,&quot;reason2&quot;:&quot;0&quot;,&quot;apply_remark&quot;:&quot;&quot;,&quot;address_is_change&quot;:1,&quot;order_diff&quot;:0,&quot;apply_source&quot;:&quot;1&quot;,&quot;apply_user&quot;:&quot;rosegal_pc&quot;},&quot;customer_name&quot;:&quot;Gint  Ju&quot;,&quot;gross_profit_rate&quot;:&quot;0.00&quot;,&quot;payment_type&quot;:&quot;228&quot;,&quot;oms_created_at&quot;:&quot;2022-01-20 10:33:50&quot;,&quot;receive_country&quot;:&quot;US&quot;,&quot;order_amount&quot;:&quot;43.80&quot;,&quot;order_shop_type&quot;:0}]
-
+:将要推送:[{&quot;iqId&quot;:950,&quot;order_sn&quot;:&quot;LB2201180131291400&quot;,&quot;variable_sn&quot;:&quot;AU20220121142425291400&quot;,&quot;order_from_id&quot;:&quot;18&quot;,&quot;department_id&quot;:&quot;42&quot;,&quot;desc&quot;:&quot;&quot;,&quot;oms_question_id&quot;:&quot;119&quot;,&quot;oms_question_type_id&quot;:&quot;1&quot;,&quot;oms_question_create_time&quot;:&quot;2022-01-21 14:24:25&quot;,&quot;oms_question_create_user&quot;:&quot;lijun7&quot;,&quot;category_id&quot;:&quot;3&quot;,&quot;unique_exception_uid&quot;:&quot;63d7c45c899749eee689c67985e11a1f&quot;,&quot;extra&quot;:{&quot;reason1&quot;:&quot;114&quot;,&quot;reason2&quot;:&quot;399&quot;,&quot;apply_remark&quot;:&quot;&quot;,&quot;address_is_change&quot;:0,&quot;order_diff&quot;:1,&quot;apply_source&quot;:&quot;1&quot;,&quot;apply_user&quot;:&quot;lijun7&quot;},&quot;customer_name&quot;:&quot;\u6d4b\u8bd5\u65e5\u672c \u6d4b\u8bd5\u65e5\u672c&quot;,&quot;gross_profit_rate&quot;:&quot;-99999999.99&quot;,&quot;payment_type&quot;:&quot;1&quot;,&quot;oms_created_at&quot;:&quot;2022-01-18 15:31:28&quot;,&quot;receive_country&quot;:&quot;JP&quot;,&quot;order_amount&quot;:&quot;24.40&quot;,&quot;order_shop_type&quot;:0}]
+:推送:[{&quot;iqId&quot;:950,&quot;order_sn&quot;:&quot;LB2201180131291400&quot;,&quot;variable_sn&quot;:&quot;AU20220121142425291400&quot;,&quot;order_from_id&quot;:&quot;18&quot;,&quot;department_id&quot;:&quot;42&quot;,&quot;desc&quot;:&quot;&quot;,&quot;oms_question_id&quot;:&quot;119&quot;,&quot;oms_question_type_id&quot;:&quot;1&quot;,&quot;oms_question_create_time&quot;:&quot;2022-01-21 14:24:25&quot;,&quot;oms_question_create_user&quot;:&quot;lijun7&quot;,&quot;category_id&quot;:&quot;3&quot;,&quot;unique_exception_uid&quot;:&quot;63d7c45c899749eee689c67985e11a1f&quot;,&quot;extra&quot;:{&quot;reason1&quot;:&quot;114&quot;,&quot;reason2&quot;:&quot;399&quot;,&quot;apply_remark&quot;:&quot;&quot;,&quot;address_is_change&quot;:0,&quot;order_diff&quot;:1,&quot;apply_source&quot;:&quot;1&quot;,&quot;apply_user&quot;:&quot;lijun7&quot;},&quot;customer_name&quot;:&quot;\u6d4b\u8bd5\u65e5\u672c \u6d4b\u8bd5\u65e5\u672c&quot;,&quot;gross_profit_rate&quot;:&quot;-99999999.99&quot;,&quot;payment_type&quot;:&quot;1&quot;,&quot;oms_created_at&quot;:&quot;2022-01-18 15:31:28&quot;,&quot;receive_country&quot;:&quot;JP&quot;,&quot;order_amount&quot;:&quot;24.40&quot;,&quot;order_shop_type&quot;:0}]
 :返回结果:{&quot;code&quot;:0,&quot;message&quot;:&quot;success&quot;,&quot;data&quot;:[]}
-
 :同步成功
-
 </pre>
 </div><p>
 <a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>
-&nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业
-</a>
+&nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业</a>
 &nbsp;|
-&nbsp;<a href="/cron/index.cgi">返回到 自动作业列表
-</a>
-<br>
-</body></html>
-=======
-<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
-<html>
-<head>
-<link rel='stylesheet' type='text/css' href='/unauthenticated/gray-reset-fonts-grids-base.css'>
-<link rel='stylesheet' type='text/css' href='/unauthenticated/gray-virtual-server-style.css' />
-<!--[if IE]>
-<style type="text/css">
-table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }
-</style>
-<![endif]-->
-<script>
-var rowsel = new Array();
-</script>
-<script type='text/javascript' src='/unauthenticated/sorttable.js'></script>
-<meta http-equiv="Content-Type" content="text/html; Charset=UTF-8">
-<title>Execute Cron Job</title>
-<script type='text/javascript'>
-window.defaultStatus="www logged into Webmin 1.810 on sms-testweb (CentOS Linux 6.8)";
-</script>
-</head>
-<body bgcolor=#ffffff link=#376ebd vlink=#376ebd text=#000000     data-pagescroll=true>
-<table class='header' width=100%><tr>
-<<<<<<< HEAD
-<td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module 索引
-</a><br>
-=======
-<td id='headln2l' width=15% valign=top align=left><a href="/cron/index.cgi">Module Index</a><br>
->>>>>>> 930940e (iss 库存轨迹)
-</td>
-<td id='headln2c' align=center width=70%><font size=+2>Execute Cron Job</font></td>
-<td id='headln2r' width=15% valign=top align=right></td></tr></table>
-<p>Output from command <tt>/data/www/devel/sms_support/daemon/run_monitor.sh mail/send_mail_queue.php</tt> ..<p>
-<pre>log file: /data/www/devel/sms_support/daemon/../data/log/cron_20220119.log
-/data/www/devel/sms_support/daemon/mail/send_mail_queue.php
-sleep 30
-</pre>
-</div><p>
-<<<<<<< HEAD
-<a href="edit_cron.cgi?idx=1191"><img alt="<-" align="top"src="/images/left.gif"></a>
-&nbsp;<a href="edit_cron.cgi?idx=1191">返回到 自动作业
-</a>
-&nbsp;|
-&nbsp;<a href="/cron/index.cgi">返回到 自动作业列表
-</a>
-=======
-<a href="edit_cron.cgi?idx=124"><img alt="<-" align="top"src="/images/left.gif"></a>
-&nbsp;<a href="edit_cron.cgi?idx=124">Return to cron job</a>
-&nbsp;|
-&nbsp;<a href="/cron/index.cgi">Return to cron list</a>
->>>>>>> 930940e (iss 库存轨迹)
+&nbsp;<a href="/cron/index.cgi">返回到 自动作业列表</a>
 <br>
 </body></html>

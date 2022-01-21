@@ -1,0 +1,401 @@
+{
+  "patternCode": "",
+  "patternCategoryId": "",
+  "patternCategoryName": "",
+  "fabricBigType": "P",
+  "sampleCode": "",
+  "oldSampleCode": "",
+  "copySampleCode": "",
+  "productCode": "",
+  "pdmCategoryCode": "1965",
+  "productName": "样品开发新增数据",
+  "plmCategoryName": "",
+  "quarter": "",
+  "month": "2",
+  "webSite": "5",
+  "styleLocation": "2",
+  "apmUserId": "25121",
+  "pmUserId": "25121",
+  "season": "2",
+  "shootWay": "3",
+  "situation": "9",
+  "holidayProduct": null,
+  "area": "1",
+  "style": "5",
+  "sampleStyle": "3",
+  "playVersion": "3",
+  "developVersion": "5",
+  "element": "9",
+  "playDate": "2022-01-28",
+  "year": 2022,
+  "remark": "",
+  "imageEditOutVos": [
+    {
+      "id": "15454",
+      "name": "15.jpg",
+      "url": "http://plm.hqygou.com:8088/image/downLoad?imageId=15454"
+    }
+  ],
+  "imageIds": "15454",
+  "sampleDevelopDeAddInVo": {
+    "disparkWeb": "",
+    "disparkWebName": "",
+    "urgency": "1",
+    "seriesCode": "",
+    "recommendType": "4",
+    "productUrl": "",
+    "recommendLevel": "b",
+    "productBrand": "2",
+    "brandName": "zaful",
+    "brandId": "Zaful",
+    "originalStatus": "1",
+    "productModel": "",
+    "originalVideoStatus": "2",
+    "videoRemark": "",
+    "version": "4",
+    "collar": "1",
+    "waistType": "2",
+    "seleeveTypeCode": "3",
+    "skirtTypeCode": "2",
+    "pantsTypeCode": "4",
+    "skirtLengthCode": "",
+    "pantsLengthCode": "",
+    "seleeveLengthCode": "",
+    "waistTypeName": "",
+    "pantsTypeName": "",
+    "seleeveTypeName": "",
+    "skirtTypeName": "",
+    "skirtLengthName": "",
+    "pantsLengthName": "",
+    "seleeveLengthName": "",
+    "productLabelGroupId": "",
+    "selectProductLabelIds": "",
+    "remark": "",
+    "productLightspot": "<p>产品亮点描述</p>",
+    "fileIds": "",
+    "files": []
+  },
+  "sampleProductDraftAddInVos": [
+    {
+      "rowId": 1642649193151,
+      "colorCode": "#701336",
+      "colorId": "519",
+      "colorName": "红色plm#6",
+      "packSizeHeightCm": "",
+      "packSizeHeightIncn": "",
+      "packSizeLongCm": "",
+      "packSizeLongIncn": "",
+      "packSizeWideCm": "",
+      "packSizeWideIncn": "",
+      "practicalWeight": "",
+      "productSizeHeightCm": "",
+      "productSizeHeightIncn": "",
+      "productSizeLongCm": "",
+      "productSizeLongIncn": "",
+      "productSizeWideCm": "",
+      "productSizeWideIncn": "",
+      "productWeight": "",
+      "sizeGroupId": 347,
+      "sizeGroupName": "衣服尺码",
+      "sizeIds": "319,318,320,317,322",
+      "sizeName": "L,M,XL,S,2XL",
+      "sizeList": [
+        {
+          "id": "314",
+          "name": "均码"
+        },
+        {
+          "id": "315",
+          "name": "XXS"
+        },
+        {
+          "id": "316",
+          "name": "XS"
+        },
+        {
+          "id": "317",
+          "name": "S"
+        },
+        {
+          "id": "318",
+          "name": "M"
+        },
+        {
+          "id": "319",
+          "name": "L"
+        },
+        {
+          "id": "320",
+          "name": "XL"
+        },
+        {
+          "id": "321",
+          "name": "1XL"
+        },
+        {
+          "id": "322",
+          "name": "2XL"
+        },
+        {
+          "id": "323",
+          "name": "3XL"
+        },
+        {
+          "id": "324",
+          "name": "4XL"
+        },
+        {
+          "id": "325",
+          "name": "5XL"
+        },
+        {
+          "id": "326",
+          "name": "6XL"
+        },
+        {
+          "id": "327",
+          "name": "7XL"
+        },
+        {
+          "id": "328",
+          "name": "8XL"
+        },
+        {
+          "id": "329",
+          "name": "9XL"
+        },
+        {
+          "id": "330",
+          "name": "1X"
+        },
+        {
+          "id": "331",
+          "name": "2X"
+        },
+        {
+          "id": "332",
+          "name": "3X"
+        },
+        {
+          "id": "333",
+          "name": "4X"
+        },
+        {
+          "id": "334",
+          "name": "5X"
+        },
+        {
+          "id": "335",
+          "name": "6X"
+        },
+        {
+          "id": "336",
+          "name": "30"
+        },
+        {
+          "id": "337",
+          "name": "31"
+        },
+        {
+          "id": "338",
+          "name": "32"
+        },
+        {
+          "id": "339",
+          "name": "33"
+        },
+        {
+          "id": "340",
+          "name": "34"
+        },
+        {
+          "id": "341",
+          "name": "35"
+        },
+        {
+          "id": "342",
+          "name": "36"
+        },
+        {
+          "id": "343",
+          "name": "37"
+        },
+        {
+          "id": "344",
+          "name": "38"
+        },
+        {
+          "id": "345",
+          "name": "39"
+        },
+        {
+          "id": "346",
+          "name": "40"
+        },
+        {
+          "id": "347",
+          "name": "41"
+        },
+        {
+          "id": "348",
+          "name": "42"
+        },
+        {
+          "id": "349",
+          "name": "43"
+        },
+        {
+          "id": "350",
+          "name": "44"
+        },
+        {
+          "id": "351",
+          "name": "45"
+        },
+        {
+          "id": "352",
+          "name": "46"
+        },
+        {
+          "id": "353",
+          "name": "47"
+        },
+        {
+          "id": "354",
+          "name": "48"
+        },
+        {
+          "id": "355",
+          "name": "49"
+        },
+        {
+          "id": "356",
+          "name": "50"
+        },
+        {
+          "id": "357",
+          "name": "25"
+        },
+        {
+          "id": "358",
+          "name": "26"
+        },
+        {
+          "id": "359",
+          "name": "27"
+        },
+        {
+          "id": "360",
+          "name": "28"
+        },
+        {
+          "id": "361",
+          "name": "29"
+        }
+      ],
+      "sizeObj": {
+        "314": "均码",
+        "315": "XXS",
+        "316": "XS",
+        "317": "S",
+        "318": "M",
+        "319": "L",
+        "320": "XL",
+        "321": "1XL",
+        "322": "2XL",
+        "323": "3XL",
+        "324": "4XL",
+        "325": "5XL",
+        "326": "6XL",
+        "327": "7XL",
+        "328": "8XL",
+        "329": "9XL",
+        "330": "1X",
+        "331": "2X",
+        "332": "3X",
+        "333": "4X",
+        "334": "5X",
+        "335": "6X",
+        "336": "30",
+        "337": "31",
+        "338": "32",
+        "339": "33",
+        "340": "34",
+        "341": "35",
+        "342": "36",
+        "343": "37",
+        "344": "38",
+        "345": "39",
+        "346": "40",
+        "347": "41",
+        "348": "42",
+        "349": "43",
+        "350": "44",
+        "351": "45",
+        "352": "46",
+        "353": "47",
+        "354": "48",
+        "355": "49",
+        "356": "50",
+        "357": "25",
+        "358": "26",
+        "359": "27",
+        "360": "28",
+        "361": "29"
+      },
+      "moreDetail": "",
+      "selectedSizeList": [
+        "319",
+        "318",
+        "320",
+        "317",
+        "322"
+      ],
+      "imageEditOutVos": [],
+      "sampleProductDeDraftAddInVos": [
+        {
+          "colorId": "519",
+          "colorName": "红色plm#6",
+          "sizeGroupId": 347,
+          "sizeId": "319",
+          "size": "L"
+        },
+        {
+          "colorId": "519",
+          "colorName": "红色plm#6",
+          "sizeGroupId": 347,
+          "sizeId": "318",
+          "size": "M"
+        },
+        {
+          "colorId": "519",
+          "colorName": "红色plm#6",
+          "sizeGroupId": 347,
+          "sizeId": "320",
+          "size": "XL"
+        },
+        {
+          "colorId": "519",
+          "colorName": "红色plm#6",
+          "sizeGroupId": 347,
+          "sizeId": "317",
+          "size": "S"
+        },
+        {
+          "colorId": "519",
+          "colorName": "红色plm#6",
+          "sizeGroupId": 347,
+          "sizeId": "322",
+          "size": "2XL"
+        }
+      ]
+    }
+  ],
+  "pdmCategoryName": "Sammydress服装>>女装>>连衣裙>>太阳裙",
+  "companyCatalogId": 11683,
+  "billType": "1",
+  "billTypeRemark": "",
+  "id": "",
+  "sampleWay": "3",
+  "materialType": null
+}

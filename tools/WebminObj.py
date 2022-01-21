@@ -83,7 +83,7 @@ class WebminObj:
             print("\n----------------------------保存成功----------------------------")
             # 执行脚本
             print("\n----------------------------开始执行脚本----------------------------")
-            exec_res = requests.get(url=execute_url, headers=self.headers, verify=False,timeout=60)
+            exec_res = requests.get(url=execute_url, headers=self.headers, verify=False)
             print(exec_res.text)
             with open(f'{self.absolute_path}/resource/webmin_script_result.html', 'w', encoding='utf-8') as fd:
                 fd.write(exec_res.text)

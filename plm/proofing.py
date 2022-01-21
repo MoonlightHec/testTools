@@ -20,4 +20,4 @@ class Proofing:
         样品开发
         :return:
         """
-        
+        url = ''

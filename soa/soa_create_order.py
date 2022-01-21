@@ -15,7 +15,7 @@ from flask import json
 
 # 获取当前文件绝对路径
 from app.log.mLogger import logger
-from soa.config import gateway_config
+from soa.soa_gateway_server import gateway_config
 from tools.DbTools import DbTools
 
 db_path = os.path.dirname(os.path.abspath(__file__))
@@ -50,8 +50,8 @@ def deal_string(*args):
 
 class SoaCreateOrder:
     def __init__(self, order_info):
-        self.env = order_info.env
-        self.url = '{}/gateway/'.format(gateway_config[order_info.env]['url'])
+        # self.env = order_info.env
+        self.url = '{}/gateway/'.format(gateway_config['url'])
         self.price = order_info.price
         self.currency_code = order_info.currency_code
         self.currency_rate = get_currency_rate(order_info.currency_code)
@@ -178,7 +178,7 @@ class SoaCreateOrder:
                 "method": "checkout",
                 "domain": "",
                 "version": "1.0.0",
-                "tokenId": gateway_config[self.env]['token']
+                "tokenId": gateway_config['token']
             },
             "body": self.body
         }
