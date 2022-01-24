@@ -7,7 +7,6 @@
 """
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 
-from app.config import host_url
 from app.log.mLogger import logger
 from app.server.tools_soa import create_soa_order
 from soa.soa_gateway_server import SoaGatewayServer
@@ -26,7 +25,7 @@ def soa_index():
     soa首页（checkout订单）
     :return:
     """
-    return render_template('soa_checkout_order.html', url=host_url)
+    return render_template('soa_checkout_order.html')
 
 
 @soa.route('/soa_gateway', methods=['GET', 'POST'])
@@ -35,7 +34,7 @@ def soa_risk():
     事后风控页面
     :return:
     """
-    return render_template('soa_gateway.html', url=host_url)
+    return render_template('soa_gateway.html')
 
 
 @soa.route('/soa_xxx', methods=['GET', 'POST'])
@@ -44,7 +43,7 @@ def soa_xxx():
     添加soa新页面
     :return:
     """
-    return render_template('soa_xxx.html', url=host_url)
+    return render_template('soa_xxx.html')
 
 
 @soa.route('/soa_checkout_order/<path:cashier>', methods=['GET', 'POST'])
@@ -54,7 +53,7 @@ def create_order_redirect(cashier):
     :param cashier:
     :return:
     """
-    return render_template('soa_checkout_order.html', url=host_url, cashier=cashier)
+    return render_template('soa_checkout_order.html', cashier=cashier)
 
 
 @soa.route('/soa_gateway/<path:res>', methods=['GET', 'POST'])
@@ -64,7 +63,7 @@ def soa_gateway_redirect(res):
     :param res:
     :return:
     """
-    return render_template('soa_gateway.html', url=host_url, after_risk_result=res)
+    return render_template('soa_gateway.html',  after_risk_result=res)
 
 
 @soa.route('/create_order', methods=['GET', 'POST'])

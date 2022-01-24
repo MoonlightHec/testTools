@@ -8,8 +8,6 @@
 
 from flask import Blueprint, render_template
 
-from app.config import host_url
-
 com = Blueprint(
     'com',
     __name__,
@@ -20,4 +18,4 @@ com = Blueprint(
 
 @com.route('/')
 def home():
-    return render_template('oms_create_order.html', url=host_url)
+    return render_template('oms_create_order.html')

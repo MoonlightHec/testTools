@@ -7,7 +7,6 @@
 """
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 
-from app.config import host_url
 from app.log.mLogger import logger
 from app.server.tools_oms import create_oms_order
 from oms.order_all_process import OrderAllProcess
@@ -27,7 +26,7 @@ def oms_create_order():
     系统主页/OMS首页
     :return:
     """
-    return render_template('oms_create_order.html', host=host_url)
+    return render_template('oms_create_order.html')
 
 
 @oms.route('/oms_webmin', methods=['GET', 'POST'])
@@ -36,7 +35,7 @@ def oms_webmin():
     oms webmin脚本页面
     :return:
     """
-    return render_template('oms_webmin.html', host=host_url)
+    return render_template('oms_webmin.html')
 
 
 @oms.route('/oms_process', methods=['GET', 'POST'])
@@ -45,7 +44,7 @@ def oms_process():
     oms 订单全流程页面
     :return:
     """
-    return render_template('oms_process.html', host=host_url)
+    return render_template('oms_process.html')
 
 
 @oms.route('/oms_process/<path:order_sn>', methods=['GET', 'POST'])
@@ -55,7 +54,7 @@ def get_order_redirect(order_sn):
     :param order_sn:
     :return:
     """
-    return render_template('oms_process.html', host=host_url, order_sn=order_sn)
+    return render_template('oms_process.html', order_sn=order_sn)
 
 
 @oms.route("/create_order", methods=["GET", "POST"])

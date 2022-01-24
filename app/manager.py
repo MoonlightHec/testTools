@@ -5,9 +5,11 @@
 # @File : __init__.py
 # @desc :
 """
+import configparser
+import os
+
 from flask import Flask, render_template
 
-from app.config import host
 from app.views import com
 from app.views.oms import oms
 from app.views.sms import sms
@@ -26,6 +28,21 @@ app.register_blueprint(oms, url_prefix='/oms')
 app.register_blueprint(soa, url_prefix='/soa')
 app.register_blueprint(sms, url_prefix='/sms')
 app.register_blueprint(wms, url_prefix='/wms')
+
+
+def host():
+    # 配置环境ip地址 mac com
+    cf = configparser.ConfigParser()
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    cf.read(f'{root_dir}/config.ini', encoding='utf-8')
+
+    host_config = dict(cf.items('com'))
+    host_url = f"http://{host_config['ip']}:{host_config['port']}"
+    return host_url
+
+
+# 设置全局函数给html传递host参数
+app.add_template_global(host(), name="host")
 
 
 @app.errorhandler(404)

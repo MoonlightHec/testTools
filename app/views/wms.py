@@ -7,11 +7,18 @@
 """
 from flask import Blueprint, render_template
 
-from app.config import host_url
-
 wms = Blueprint(
     'wms',
     __name__,
     template_folder='templates',
     static_folder='static'
 )
+
+
+@wms.route('/test', methods=['GET', 'POST'])
+def soa_index():
+    """
+    soa首页（checkout订单）
+    :return:
+    """
+    return render_template('404.html')
