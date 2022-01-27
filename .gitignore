@@ -142,3 +142,4 @@ cython_debug/
 app/config/
 app/static/css/
 app/static/img/
+webmin_script_result.html
