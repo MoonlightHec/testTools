@@ -3,9 +3,8 @@
 # @Time : 2021/10/30 16:05 
 # @Author : lijun
 # @File : __init__.py.py
-# @desc :
+# @desc : 初始化app
 """
-
 from flask import Blueprint, render_template
 
 com = Blueprint(
@@ -18,4 +17,8 @@ com = Blueprint(
 
 @com.route('/')
 def home():
+    """
+    根路径访问oms首页
+    :return:
+    """
     return render_template('oms_create_order.html')

@@ -21,4 +21,4 @@ def soa_index():
     soa首页（checkout订单）
     :return:
     """
-    return render_template('404.html')
+    return render_template('505.html')

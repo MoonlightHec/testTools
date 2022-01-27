@@ -20,6 +20,15 @@ oms = Blueprint(
 )
 
 
+@oms.route('/')
+def home():
+    """
+    根路径访问oms首页
+    :return:
+    """
+    return render_template('oms_create_order.html')
+
+
 @oms.route('/oms_create_order', methods=['GET', 'POST'])
 def oms_create_order():
     """
@@ -183,7 +192,8 @@ def order_process_picking_order():
     logger.info("oms生成配货单:form表单数据 {}".format(picking_info))
     if picking_info['order-sn']:
         process = OrderAllProcess(picking_info['order-sn'])
-        flash(process.oms_piking_order(sku=picking_info['goods-sn'], stock_id=picking_info['stock-id'], express_id=picking_info['express-id']))
+        flash(process.oms_piking_order(sku=picking_info['goods-sn'], stock_id=picking_info['stock-id'],
+                                       express_id=picking_info['express-id']))
         return redirect(url_for('oms.get_order_redirect', order_sn=picking_info['order-sn']))
     flash("请输入订单号")
     return redirect(url_for('oms.oms_process'))
