@@ -148,7 +148,7 @@
     },
     "send_station_queue": {
       "desc": "发送站内信队列数据",
-      "cmd": "/data/www/devel/sms_support/daemon/run_monitor.sh mail/send_mail_queue.php",
+      "cmd": "/data/www/devel/sms/daemon/run_monitor.sh mail/send_mail_queue.php",
       "comment": "发送站内信队列数据 --李军"
     },
     "send_reply_support": {
