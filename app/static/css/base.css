@@ -1,0 +1,92 @@
+.sys-btn {
+    width: 100px;
+    height: 30px;
+    padding-left: 5px;
+    border: solid 1px dodgerblue;
+    color: white;
+    background: dodgerblue;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.sys-btn:hover {
+    background: deepskyblue;
+    border: solid 1px deepskyblue;
+}
+
+/*提交按钮-大*/
+.submit-btn-big {
+    width: 100px;
+    height: 40px;
+    background: dodgerblue;
+    border: solid 1px dodgerblue;
+    border-radius: 3px;
+    color: white;
+    font-size: 20px;
+}
+
+.submit-btn-big:hover {
+    background: deepskyblue;
+    border: solid 1px deepskyblue;
+}
+
+/*提交按钮-小*/
+.submit-btn-common {
+    height: 24px;
+    width: 80px;
+    box-sizing: border-box;
+    background: dodgerblue;
+    border: solid 1px dodgerblue;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+}
+
+.submit-btn-common:hover {
+    background: deepskyblue;
+    border: solid 1px deepskyblue;
+}
+
+/*通用div*/
+.div-common {
+    margin: 10px 2px;
+}
+
+/*通用文本*/
+.label-common-right {
+    width: 120px;
+    display: inline-block;
+    text-align: right;
+    color: #606266;
+    box-sizing: border-box;
+}
+
+.label-common-left {
+    width: 120px;
+    display: inline-block;
+    text-align: left;
+    color: #606266;
+    box-sizing: border-box;
+}
+
+/*通用输入框*/
+.input-common {
+    line-height: 40px;
+    width: 150px;
+    height: 25px;
+    display: inline-block;
+    border: solid 1px #dcdfe6;
+    border-radius: 3px;
+    color: #606266;
+    box-sizing: border-box;
+    text-align: left;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+.flash-msg {
+    height: 40vh;
+    background: aqua;
+    color: orangered;
+    text-align: center;
+}

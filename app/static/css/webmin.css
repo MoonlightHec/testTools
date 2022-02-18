@@ -1,0 +1,46 @@
+.webmin-info {
+    width: 60%;
+    height: 600px;
+    border: 1px solid #ccc;
+    float: left;
+    padding-left: 10px;
+    margin: 5px;
+    overflow: auto;
+}
+
+.webmin-submit {
+    width: 35%;
+    height: 600px;
+    border: 1px solid #ccc;
+    float: left;
+    padding-left: 10px;
+    margin: 5px;
+    overflow: auto;
+}
+
+/*脚本描述信息*/
+.webmin-script-desc {
+    display: inline-block;
+    color: #606266;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    margin: 10px;
+}
+
+/*脚本名称*/
+.webmin-script-name {
+    display: inline-block;
+    color: black;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.div-submit {
+    margin: 20px 5px;
+}
+
+.label-webmin-submit {
+    display: inline-block;
+    color: #606266;
+    box-sizing: border-box;
+}

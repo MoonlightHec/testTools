@@ -1,0 +1,52 @@
+/*造单、全流程最大的div盒子*/
+.order-info {
+    width: 47vw;
+    height: 77vh;
+    border: 1px solid #ccc;
+    float: left;
+    padding-left: 10px;
+    margin: 5px;
+    overflow: auto;
+}
+
+.div-common {
+    margin: 10px 2px;
+}
+
+/*全流程步骤名字*/
+.p-text {
+    font-weight: bold;
+}
+
+/*全流程通用label*/
+.label-oms-process {
+    display: inline-block;
+    color: #606266;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+/*全流程右对齐label*/
+.label-oms-process-right {
+    width: 100px;
+    display: inline-block;
+    color: #606266;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+/*全流程input框*/
+.input-oms-process {
+    line-height: 40px;
+    width: 150px;
+    height: 25px;
+    display: inline-block;
+    border: solid 1px #dcdfe6;
+    border-radius: 3px;
+    color: #606266;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 14px;
+    margin-right: 5px;
+}
