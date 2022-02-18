@@ -139,7 +139,24 @@ def run_lms():
     lms_script.run_script('更新箱子状态')
 
 
+def run_pms():
+    """
+    # 推送采购入库明细数据：push_purchase_info 时间:2022-01-31
+    :return:
+    """
+    pms_script = WebminObj(app_name='pms')
+    pms_script.run_script('push_purchase_info', '2022-2-12', '2022-02-14')
+
+
+def run_fas():
+    """
+    # 接收采购入库明细数据：get_purchase_info
+    :return:
+    """
+    pms_script = WebminObj(app_name='fas')
+    pms_script.run_script('get_purchase_info')
+
+
 if __name__ == '__main__':
-    # run_oms()
-    run_sms()
-    # run_lms()
+    # run_pms()
+    run_fas()

@@ -1,8 +1,9 @@
 {% extends "oms.html" %}
 
-{% block function %}
+{% block model %}
+    {{ super() }}
     <div name="functions">
-        <div class="webmin-info" style="width: 1000px">
+        <div class="webmin-info">
             <ol>
                 <li>同步配货单到wms
                     <ul>
@@ -12,7 +13,8 @@
                 <hr/>
                 <li>匹配订单
                     <ul>OMS匹配订单
-                        <li>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php {站点} --order_sn {订单编号}</li>
+                        <li>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php {站点} --order_sn {订单编号}
+                        </li>
                         <li>站点：【RG：33，ZF：45，DL：18，清仓站：199】</li>
                     </ul>
                 </li>
@@ -43,10 +45,12 @@
                 <hr/>
                 <li>接收soa订单
                     <ul>
-                        <li> flock -xn /tmp/MQ_OrderControllerZF.lock -c 'php /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {站点}'</li>
+                        <li> flock -xn /tmp/MQ_OrderControllerZF.lock -c 'php
+                            /data/www/devel/oms/daemon/interface_mq/web/MQ_OrderController.php {站点}'
+                        </li>
                     </ul>
                 </li>
-               <hr/>
+                <hr/>
                 <li>推送退款请求给soa
                     <ul>
                         <li> php /data/www/devel/oms/daemon/refund/auto_common_refund.php --payment_type {原支付方式}</li>
@@ -56,7 +60,8 @@
                 <hr/>
                 <li>退款到电子钱包
                     <ul>
-                        <li> php /data/www/devel/oms/daemon/wallet/sync_wallet_refund_to_soa.php --apply_sn {退款申请单编号}</li>
+                        <li> php /data/www/devel/oms/daemon/wallet/sync_wallet_refund_to_soa.php --apply_sn {退款申请单编号}
+                        </li>
                     </ul>
                 </li>
                 <hr/>

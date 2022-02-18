@@ -53,10 +53,14 @@ class DB:
             return True
 
     # 实现上下文管理器协议，可以使用with
-    def __enter__(self):
-        return self
+    # def __enter__(self):
+    #     return self
+    #
+    # def __exit__(self, exc_type, exc_val, exc_tb):
+    #     self.cursor.close()
+    #     self.connect.close()
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __del__(self):
         self.cursor.close()
         self.connect.close()
 

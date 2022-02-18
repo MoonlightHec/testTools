@@ -11,6 +11,7 @@ from app.views import com
 from app.views.oms import oms
 from app.views.sms import sms
 from app.views.soa import soa
+from app.views.webmin import webmin
 from app.views.wms import wms
 
 app = Flask(__name__)
@@ -23,6 +24,7 @@ def register_blueprints():
     app.register_blueprint(soa, url_prefix='/soa')
     app.register_blueprint(sms, url_prefix='/sms')
     app.register_blueprint(wms, url_prefix='/wms')
+    app.register_blueprint(webmin, url_prefix='/webmin')
 
 
 def app_config(env='product'):

@@ -22,3 +22,5 @@ def home():
     :return:
     """
     return render_template('oms_create_order.html')
+
+

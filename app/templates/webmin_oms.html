@@ -1,0 +1,44 @@
+{% extends "webmin.html" %}
+{% block style %}
+    {{ super() }}
+{% endblock %}
+
+{% block model %}
+    {{ super() }}
+    <div>
+        <div class="webmin-info">
+            <div class="webmin-script-desc">
+                <div class="webmin-script-name">推送异常工单到wos:</div>
+                <div>php /data/www/devel/oms/daemon/wos/question/PushToWos.php</div>
+            </div>
+            <div class="webmin-script-desc">
+                <div class="webmin-script-name">匹配订单:</div>
+                <div>php /data/www/devel/oms/daemon/payment/auto_match_payment_info.php {站点} --order_sn {订单编号}</div>
+                <div>站点：【RG：33，ZF：45，DL：18，清仓站：199】</div>
+            </div>
+
+        </div>
+        <div class="webmin-submit">
+            <form action="{{ host }}/webmin/submit?sys=oms" target="_blank" method="POST">
+                <div class="div-submit">
+                    <label class="label-webmin-submit">选择脚本:</label>
+                    <select class="input-common" name="script-name">
+                        <option value="推送异常工单到wos">推送异常工单到wos</option>
+                        <option value="匹配订单">匹配订单</option>
+                    </select>
+                </div>
+                <div class="div-submit">
+                    <label for="webmin-params" class="label-webmin-submit">请输入参数:（没有则不填）</label>
+                </div>
+                <div class="div-submit">
+                    <input id="webmin-params" class="input-common" name="webmin-params1">
+                    <input class="input-common" name="webmin-params2">
+                    <input class="input-common" name="webmin-params3">
+                </div>
+                <div class="div-submit">
+                    <input class="submit-btn-big" type="submit" value="立即执行">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

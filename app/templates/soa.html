@@ -1,21 +1,12 @@
 {% extends "base.html" %}
 {% block model %}
-    <div>
-        <div style="float: left">
-            <button class="function-btn" onclick="window.location.href = '/soa/soa_checkout_order'">checkout订单</button>
-        </div>
-        <div style="float: left;text-indent:1em">
-            <button class="function-btn" onclick="window.location.href = '/soa/soa_gateway'">gateway服务</button>
-        </div>
-        <div style="text-indent:1em">
-            <button class="function-btn" onclick="window.location.href = '/soa/soa_xxx'">......</button>
-        </div>
-        <hr/>
+    {{ super() }}
+    <div style="padding-top: 10px;">
+        <button class="sys-btn" onclick="window.location.href = '/soa/soa_checkout_order'">checkout订单</button>
+        <button class="sys-btn" onclick="window.location.href = '/soa/soa_gateway'">gateway服务</button>
+        <button class="sys-btn" onclick="window.location.href = '/soa/soa_xxx'">......</button>
     </div>
-
-    {% block function %}
-
-    {% endblock %}
+    <hr/>
 {% endblock %}
 
 

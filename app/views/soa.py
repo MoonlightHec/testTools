@@ -43,7 +43,19 @@ def soa_xxx():
     添加soa新页面
     :return:
     """
-    return render_template('soa_xxx.html')
+    msg = """
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ hhhh
+</body>
+</html>
+    """
+    return render_template('soa_xxx.html', msg=msg)
 
 
 @soa.route('/soa_checkout_order/<path:cashier>', methods=['GET', 'POST'])
@@ -63,7 +75,7 @@ def soa_gateway_redirect(res):
     :param res:
     :return:
     """
-    return render_template('soa_gateway.html',  after_risk_result=res)
+    return render_template('soa_gateway.html', after_risk_result=res)
 
 
 @soa.route('/create_order', methods=['GET', 'POST'])

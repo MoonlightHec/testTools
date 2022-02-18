@@ -1,0 +1,40 @@
+{% extends "webmin.html" %}
+{% block style %}
+    {{ super() }}
+{% endblock %}
+
+{% block model %}
+    {{ super() }}
+    <div>
+        <div class="webmin-info">
+            <div class="webmin-script-desc">
+                <div class="webmin-script-name">接收pms采购入库数据:</div>
+                <div>
+                    /usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_no_dist
+                </div>
+            </div>
+
+        </div>
+        <div class="webmin-submit">
+            <form action="{{ host }}/webmin/submit?sys=fas" target="_blank" method="POST">
+                <div class="div-submit">
+                    <label class="label-webmin-submit">选择脚本:</label>
+                    <select class="input-common" name="script-name">
+                        <option value="get_purchase_info">接收pms采购入库数据</option>
+                    </select>
+                </div>
+                <div class="div-submit">
+                    <label for="webmin-params" class="label-webmin-submit">请输入参数:（没有则不填）</label>
+                </div>
+                <div class="div-submit">
+                    <input id="webmin-params" class="input-common" name="webmin-params1">
+                    <input class="input-common" name="webmin-params2">
+                    <input class="input-common" name="webmin-params3">
+                </div>
+                <div class="div-submit">
+                    <input class="submit-btn-big" type="submit" value="立即执行">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

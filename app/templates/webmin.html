@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block style %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/webmin.css') }}">
+{% endblock %}
+
+{% block model %}
+    <div style="padding-top: 10px;">
+        <button class="sys-btn" onclick="window.location.href = '/webmin/webmin_oms'">oms</button>
+        {#<button class="sys-btn" onclick="window.location.href = '/webmin/webmin_sms'">sms</button>#}
+        <button class="sys-btn" onclick="window.location.href = '/webmin/webmin_pms'">pms</button>
+        <button class="sys-btn" onclick="window.location.href = '/webmin/webmin_fas'">fas</button>
+    </div>
+    <hr/>
+{% endblock %}
+
+

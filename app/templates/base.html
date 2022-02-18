@@ -5,68 +5,45 @@
         <meta charset="UTF-8">
         <title>TestTools</title>
     {% endblock %}
+
+    {#style样式,导入css文件#}
+    {% block style %}
+        {#<link rel="stylesheet" type="text/css" href="../static/css/base.css">#}
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css') }}">
+    {% endblock %}
+
 </head>
 {#script脚本#}
 {% block script %}
-    {#    <script type="text/javascript" src="../static/js/index.js"></script>#}
+    <script type="text/javascript" src="{{ url_for('static',filename='js/base.js') }}"></script>
 {% endblock %}
 
-{#style样式#}
-<style>
-    .sys-btn {
-        width: 100px;
-        height: 30px
-    }
 
-    {% block style %}
-        {% block func_btn %}
-            .function-btn {
-                width: 100px;
-                height: 30px
-            }
-        {% endblock %}
-        {#子类style#}
-        {% block son_style %}
-
-        {% endblock %}
-
-    {% endblock %}
-</style>
 
 <body>
 {% block system %}
-    <div>
-        <br>
-        <div style="float: left">
-            <button class="sys-btn" onclick="window.location.href = '/oms/oms_create_order'">OMS</button>
-        </div>
-        <div style="float: left;text-indent:1em">
-            <button class="sys-btn" onclick="window.location.href = '/soa/soa_checkout_order'">SOA</button>
-        </div>
-        <div style="float: left;text-indent:1em">
-            <button class="sys-btn" onclick="window.location.href = '/sms/oms_process'">SMS</button>
-        </div>
-        <div style="text-indent:1em">
-            <button class="sys-btn" onclick="window.location.href = '/wms/oms_webmin'">......</button>
-        </div>
-        <br>
-        <hr/>
+    <div style="padding: 20px 0px;">
+        <button class="sys-btn" onclick="window.location.href = '/oms/oms_create_order'">OMS</button>
+        <button class="sys-btn" onclick="window.location.href = '/soa/soa_checkout_order'">SOA</button>
+        {#<button class="sys-btn" onclick="window.location.href = '/sms/oms_process'">SMS</button>#}
+        <button class="sys-btn" onclick="window.location.href = '/webmin/webmin_oms'">Webmin</button>
     </div>
-    {% block flash %}
-        <div style="">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for msg in messages %}
-                        <div id="div-message-id">
-                            <dialog open id="flash-message-id">{{ msg }}
-{#                                <button type="button" onclick="close_flash_message();">x</button>#}
-                            </dialog>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
-    {% endblock %}
+    <hr/>
+    {#    {% block flash %}#}
+    {#        <div style="">#}
+    {#            {% with messages = get_flashed_messages() %}#}
+    {#                {% if messages %}#}
+    {#                    {% for msg in messages %}#}
+    {#                        <div id="div-message-id">#}
+    {#                            <dialog open id="flash-message-id">{{ msg }}#}
+    {#<button type="button" onclick="close_flash_message();">x</button>#}
+    {#                            </dialog>#}
+    {#                        </div>#}
+    {#                    {% endfor %}#}
+    {#                {% endif %}#}
+    {#            {% endwith %}#}
+    {#        </div>#}
+    {#    {% endblock %}#}
 
 {% endblock %}
 

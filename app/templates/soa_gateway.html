@@ -1,18 +1,18 @@
 {% extends "soa.html" %}
 
-{% block function %}
+{% block model %}
+    {{ super() }}
     <div>
         <form action="/soa/soa_gateway/after_risk" method="POST">
-            <div>事后风控：
-                <br>
-                <label>pay_sn：</label>
-                <input name="pay-sn">
-                <input type="submit" value="确定">
+            <label style="font:bold 18px black ">发起事后风控：</label>
+            <div class="div-common">
+                <label for="pay-sn" class="label-common-right">pay_sn：</label>
+                <input id="pay-sn" class="input-common" name="pay-sn">
+                <input class="submit-btn-common" type="submit" value="确定">
             </div>
-            <div>
+            <div class="div-common">
                 {{ after_risk_result }}
             </div>
-            <hr/>
         </form>
     </div>
 {% endblock %}

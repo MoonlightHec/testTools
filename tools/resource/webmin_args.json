@@ -170,5 +170,33 @@
       "cmd": "cd /data/www/devel/lms && php artisan update:orderStatusBox",
       "comment": "更新箱子状态"
     }
+  },
+  "pms": {
+    "config": {
+      "idx": 898,
+      "user": "www1",
+      "Referer": "https://10.60.48.65:8100/cron/edit_cron.cgi",
+      "save_url": "https://10.60.48.65:8100/cron/save_cron.cgi",
+      "execute_url": "https://10.60.48.65:8100/cron/exec_cron.cgi?idx={}"
+    },
+    "push_purchase_info": {
+      "desc": "推送入库明细数据",
+      "cmd": "cd /data/www/devel/pms/daemon && php fas/autoBackDetailCert.php -s={} -e={}",
+      "comment": "推送入库明细数据-lijun"
+    }
+  },
+  "fas": {
+    "config": {
+      "idx": 88,
+      "user": "www",
+      "Referer": "https://10.60.34.197:8100/cron/edit_cron.cgi",
+      "save_url": "https://10.60.34.197:8100/cron/save_cron.cgi",
+      "execute_url": "https://10.60.34.197:8100/cron/exec_cron.cgi?idx={}"
+    },
+    "get_purchase_info": {
+      "desc": "消费pms采购数据",
+      "cmd": "/usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_no_dist",
+      "comment": "消费pms采购数据-lijun"
+    }
   }
 }

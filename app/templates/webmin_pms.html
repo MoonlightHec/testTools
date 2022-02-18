@@ -1,0 +1,38 @@
+{% extends "webmin.html" %}
+{% block style %}
+    {{ super() }}
+{% endblock %}
+
+{% block model %}
+    {{ super() }}
+    <div>
+        <div class="webmin-info">
+            <div class="webmin-script-desc">
+                <div class="webmin-script-name">给fas推送采购入库非铺货数据:</div>
+                <div>cd /data/www/devel/pms/daemon && php fas/autoBackDetailCert.php -s={开始时间} -e={结束时间}</div>
+                <div>时间格式:2022-2-10</div>
+            </div>
+        </div>
+        <div class="webmin-submit">
+            <form action="{{ host }}/webmin/submit?sys=pms" target="_blank" method="POST">
+                <div class="div-submit">
+                    <label class="label-webmin-submit">选择脚本:</label>
+                    <select class="input-common" name="script-name">
+                        <option value="push_purchase_info">给fas推送采购入库非铺货数据</option>
+                    </select>
+                </div>
+                <div class="div-submit">
+                    <label for="webmin-params" class="label-webmin-submit">请输入参数:（没有则不填）</label>
+                </div>
+                <div class="div-submit">
+                    <input id="webmin-params" class="input-common" name="webmin-params1">
+                    <input class="input-common" name="webmin-params2">
+                    <input class="input-common" name="webmin-params3">
+                </div>
+                <div class="div-submit">
+                    <input class="submit-btn-big" type="submit" value="立即执行">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

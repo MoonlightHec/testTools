@@ -1,196 +1,199 @@
 {% extends "oms.html" %}
+{% block style %}
+    {{ super() }}
 
-{% block function %}
-    <div name="functions">
-        <form action="{{ host }}/oms/create_order" target="_top" method="POST">
-            <div class="order-info">
-                <label style="height:25px;font-size:26px"><br>订单信息：</label>
-                <div>
-                    <label><br>顾客编号：*</label>
-                    <select name="customer-id">
+{% endblock %}
+
+{% block model %}
+    {{ super() }}
+
+    <form action="{{ host }}/oms/create_order" target="_top" method="POST">
+        <div class="order-info">
+            <div>
+                <label style="height:25px;font-size:26px"> 订单信息：</label>
+            </div>
+            <div style="float: left">
+                <div class="div-common">
+                    <label class="label-common-right"> 顾客编号：*</label>
+                    <select class="input-common" name="customer-id">
                         <option value="775">775</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>订单编号：*</label>
-                    <input name="order-sn" disabled> (自动生成)
+                <div class="div-common">
+                    <label class="label-common-right">订单编号：*</label>
+                    <input class="input-common" name="order-sn" disabled value="(自动生成)">
                 </div>
-                <div>
-                    <label><br>事业部：*</label>
-                    <select name="department-id">
+                <div class="div-common">
+                    <label class="label-common-right">事业部：*</label>
+                    <select class="input-common" name="department-id">
                         <option value="42" selected>服装事业部</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>订单来源：*</label>
-                    <select name="order-from">
+                <div class="div-common">
+                    <label class="label-common-right">订单来源：*</label>
+                    <select class="input-common" name="order-from">
                         <option value="45" selected>zaful.com</option>
                         <option value="33">rosegal.com</option>
                         <option value="18">dresslily.com</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>订单类型：*</label>
-                    <select name="settlement-id">
+                <div class="div-common">
+                    <label class="label-common-right">订单类型：*</label>
+                    <select class="input-common" name="settlement-id">
                         <option value="1" selected>先款后货</option>
                         <option value="2" disabled="disabled">预收定金</option>
                         <option value="3" disabled="disabled">账期</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>订单币种：*</label>
-                    <input name="order-currency" value="USD">
+                <div class="div-common">
+                    <label class="label-common-right"> 订单币种：*</label>
+                    <input class="input-common" name="order-currency" value="USD">
                 </div>
-                <div>
-                    <label><br>订单汇率：*</label>
-                    <input type="number" step="0.0000000001" name="order-currency-rate" value="1.0000000000">
+                <div class="div-common">
+                    <label class="label-common-right"> 订单汇率：*</label>
+                    <input class="input-common" type="number" step="0.0000000001" name="order-currency-rate"
+                           value="1.0000000000">
                 </div>
-                <div>
-                    <label><br>Email：*</label>
-                    <input type="email" name="receiver-email" value="lijun7@globalegrow.com">
+                <div class="div-common">
+                    <label class="label-common-right"> Email：*</label>
+                    <input class="input-common" type="email" name="receiver-email" value="lijun7@globalegrow.com">
                 </div>
-                <div>
-                    <label><br>姓名：*</label>
-                    <input name="receiver-name" value="李军7">
+                <div class="div-common">
+                    <label class="label-common-right"> 姓名：*</label>
+                    <input class="input-common" name="receiver-name" value="李军7">
                 </div>
-                <div>
-                    <label><br>详情地址1：*</label>
-                    <input name="receiver-address-1" value="address_1">
+                <div class="div-common">
+                    <label class="label-common-right"> 详情地址1：*</label>
+                    <input class="input-common" name="receiver-address-1" value="address_1">
                 </div>
-                <div>
-                    <label><br>详情地址2：*</label>
-                    <input name="receiver-address-2" value="address_2">
+                <div class="div-common">
+                    <label class="label-common-right"> 详情地址2：*</label>
+                    <input class="input-common" name="receiver-address-2" value="address_2">
                 </div>
-                <div>
-                    <label><br>城市：*</label>
-                    <input name="receiver-city" value="ADELSHOFEN">
+                <div class="div-common">
+                    <label class="label-common-right"> 城市：*</label>
+                    <input class="input-common" name="receiver-city" value="ADELSHOFEN">
                 </div>
-                <div>
-                    <label><br>州/省：*</label>
-                    <input name="receiver-province" value="Alaska">
+                <div class="div-common">
+                    <label class="label-common-right"> 州/省：*</label>
+                    <input class="input-common" name="receiver-province" value="Alaska">
                 </div>
-                <div>
-                    <label><br>邮编：*</label>
-                    <input name="receiver-postcode" value="55555">
+                <div class="div-common">
+                    <label class="label-common-right"> 邮编：*</label>
+                    <input class="input-common" name="receiver-postcode" value="55555">
                 </div>
-                <div>
-                    <label><br>国家：*</label>
-                    <input name="receiver-country-code" value="DE">
+                <div class="div-common">
+                    <label class="label-common-right"> 国家：*</label>
+                    <input class="input-common" name="receiver-country-code" value="DE">
                 </div>
-                <div>
-                    <label><br>电话：*</label>
-                    <input type="tel" name="receiver-tel" value="545775444">
+            </div>
+            <div style="float: left">
+                <div class="div-common">
+                    <label class="label-common-right"> 电话：*</label>
+                    <input class="input-common" type="tel" name="receiver-tel" value="545775444">
                 </div>
-                <div>
-                    <label><br>挂号费：*</label>
-                    <input type="number" step="0.01" name="registered-fee" value="0.5">
+                <div class="div-common">
+                    <label class="label-common-right"> 挂号费：*</label>
+                    <input class="input-common" type="number" step="0.01" name="registered-fee" value="0.5">
                 </div>
-                <div>
-                    <label><br>保险费：*</label>
-                    <input type="number" step="0.01" name="insurance-fee" value="0.1">
+                <div class="div-common">
+                    <label class="label-common-right"> 保险费：*</label>
+                    <input class="input-common" type="number" step="0.01" name="insurance-fee" value="0.1">
                 </div>
-                <div>
-                    <label><br>运费：*</label>
-                    <input type="number" step="0.01" name="shipping-fee" value="1.5">
+                <div class="div-common">
+                    <label class="label-common-right"> 运费：*</label>
+                    <input class="input-common" type="number" step="0.01" name="shipping-fee" value="1.5">
                 </div>
-                <div>
-                    <label><br>是否需要发票：</label>
-                    <select name="is-invoice">
+                <div class="div-common">
+                    <label class="label-common-right"> 是否需要发票：</label>
+                    <select class="input-common" name="is-invoice">
                         <option value="1">是</option>
                         <option value="0" selected>否</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>备注内容：</label>
-                    <input name="remark" value="">
+                <div class="div-common">
+                    <label class="label-common-right"> 备注内容：</label>
+                    <input class="input-common" name="remark" value="">
                 </div>
-                <div>
-                    <label><br>发货仓库：</label>
-                    <select name="stock-id">
+                <div class="div-common">
+                    <label class="label-common-right"> 发货仓库：</label>
+                    <select class="input-common" name="stock-id">
                         <option value="1">肇庆01仓</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>物流方式：</label>
-                    <select name="express-id">
+                <div class="div-common">
+                    <label class="label-common-right"> 物流方式：</label>
+                    <select class="input-common" name="express-id">
                         <option value="79">山西邮政小包挂号</option>
                         <option value="2393" selected>加拿大专线(FZ)</option>
                         <option value="17">中国邮政小包挂号</option>
                     </select>
                 </div>
-                <div style="display: none">
-                    <label><br>express_appoint：</label>
-                    <input value="0">
+                <div class="div-common" style="display: none">
+                    <label class="label-common-right"> express_appoint：</label>
+                    <input class="input-common" value="0">
                 </div>
-                <div>
-                    <label><br>是否拆包：</label>
-                    <select name="is-unpacking">
+                <div class="div-common">
+                    <label class="label-common-right"> 是否拆包：</label>
+                    <select class="input-common" name="is-unpacking">
                         <option value="1">是</option>
                         <option value="0" selected>否</option>
                     </select>
                 </div>
-                <div>
-                    <label><br>客户父称：</label>
-                    <input name="customer-middle-name" value="">
+                <div class="div-common">
+                    <label class="label-common-right"> 客户父称：</label>
+                    <input class="input-common" name="customer-middle-name" value="">
                 </div>
-                <div>
-                    <label><br>护照编号：</label>
-                    <input name="customer-passport-serial" value="">
+                <div class="div-common">
+                    <label class="label-common-right"> 护照编号：</label>
+                    <input class="input-common" name="customer-passport-serial" value="">
                 </div>
-                <div>
-                    <label><br>护照号：</label>
-                    <input name="customer-passport" value="">
+                <div class="div-common">
+                    <label class="label-common-right"> 护照号：</label>
+                    <input class="input-common" name="customer-passport" value="">
                 </div>
-                <div>
-                    <label><br>护照发证日期：</label>
-                    <input name="customer-passport-issue-date" value="">
+                <div class="div-common">
+                    <label class="label-common-right"> 护照发证日期：</label>
+                    <input class="input-common" name="customer-passport-issue-date" value="">
                 </div>
+            </div>
+        </div>
+        <div class="order-info" style="height: 38vh">
+            <label style="height:25px;font-size:26px"> 支付方式:</label>
+            <input class="submit-btn-big" type="submit" value="创建订单" style="float: right;margin: 5px 10px">
+            <div class="div-common">
+                <label class="label-common-right"> 支付方式：</label>
+                <select class="input-common" name="pay-way">
+                    <option value="9" selected>客户预存款</option>
+                </select>
+            </div>
+            <div class="div-common">
+                <label class="label-common-right"> 付款id：</label>
+                <select class="input-common" name="pay-id">
+                    <option value="20211118144438">20211118144438</option>
+                </select>
+            </div>
+        </div>
+        <div class="order-info" style="height: 38vh">
+            <label style="height:25px;font-size:26px">商品信息:</label>
+            <div class="div-common">
+                <label class="label-common-right"> sku：*</label>
+                <input class="input-common" name="sku0" value="148786003">
+            </div>
+            <div class="div-common">
+                <label class="label-common-right"> 产品价格：*</label>
+                <input class="input-common" type="number" step="0.1" name="price0" value="2.1">
+            </div>
+            <div class="div-common">
+                <label class="label-common-right"> 购买数量：*</label>
+                <input class="input-common" type="number" name="qty0" value="1">
+            </div>
+            <div class="div-common">
+                <label class="label-common-right"> 备注：</label>
+                <input class="input-common" name="goods-remark0" value="sku备注">
+            </div>
+        </div>
+    </form>
+    <div style="clear: both"></div>
 
-            </div>
-            <div class="order-info">
-                <div>
-                    <label style="height:25px;font-size:26px"><br>支付方式:</label>
-                    <div>
-                        <label><br>支付方式：</label>
-                        <select name="pay-way">
-                            <option value="9" selected>客户预存款</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label><br>付款id：</label>
-                        <select name="pay-id">
-                            <option value="20211118144438">20211118144438</option>
-                        </select>
-                    </div>
-                </div>
-                <div><br><br>
-                    <label style="height:25px;font-size:26px">商品信息:</label>
-                    <input type="button" name="add-sku-btn" value="+"></input>
-                    <div>
-                        <div>
-                            <label><br>sku：*</label>
-                            <input name="sku0" value="148786003">
-                        </div>
-                        <div>
-                            <label><br>产品价格：*</label>
-                            <input type="number" step="0.1" name="price0" value="2.1">
-                        </div>
-                        <div>
-                            <label><br>购买数量：*</label>
-                            <input type="number" name="qty0" value="1">
-                            <div>
-                                <label><br>备注：</label>
-                                <input name="goods-remark0" value="sku备注">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </div>
-            <div style="text-indent:1em">
-                <input type="submit" value="创建订单" style="height:40px;width:100px;font-size:20px;font-style: revert">
-            </div>
-        </form>
-    </div>
 {% endblock %}

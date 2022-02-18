@@ -16,7 +16,8 @@ oms = Blueprint(
     'oms',
     __name__,
     template_folder='templates',
-    static_folder='static'
+    static_folder='static',
+    static_url_path='/static'
 )
 
 
@@ -87,19 +88,20 @@ def get_order_info():
 
 
 @oms.route('/webmin', methods=['GET', 'POST'])
-def run_webmin():
+def match_order():
     """
-    执行webmin脚本
+    订单全流程中的webmin
     :return:
     """
     script_info = request.form.to_dict()
-    logger.info("执行webmin脚本：form表单数据 {}".format(script_info))
-    webmin_params = []
+    logger.info("oms订单全流程webmin：form表单数据 {}".format(script_info))
+    webmin_params = [request.args['name']]
     for value in script_info.values():
         if value:
             webmin_params.append(value)
     web_script = WebminObj(app_name='oms')
-    return web_script.run_script(*webmin_params)
+    flash(web_script.run_script(*webmin_params))
+    return redirect(url_for('oms.get_order_redirect', order_sn=script_info['order-sn']))
 
 
 @oms.route('/allProcess/addSkuOms', methods=['GET', 'POST'])
