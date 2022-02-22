@@ -35,7 +35,7 @@
                     </form>
                     <span>2).OMS接收网站订单：</span>
                     <div class="div-common">
-                        <form action="{{ host }}/oms/webmin?name=接收soa订单" target="_top" method="POST">
+                        <form action="{{ host }}/oms/webmin?name=接收soa订单" target="_blank" method="POST">
                             <label class="label-oms-process-right">站点：</label>
                             <select class="input-oms-process" name="order-from" style="font-size:16px;">
                                 <option value="45">ZF</option>
@@ -162,9 +162,7 @@
                 {% if messages %}
 
                     {% for msg in messages %}
-                        <div id="div-message-id" class="flash-msg">
-                            {{ msg }}
-                        </div>
+                        {{ msg }}
                     {% endfor %}
                 {% endif %}
             {% endwith %}

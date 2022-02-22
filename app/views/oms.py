@@ -17,7 +17,6 @@ oms = Blueprint(
     __name__,
     template_folder='templates',
     static_folder='static',
-    static_url_path='/static'
 )
 
 
@@ -101,7 +100,8 @@ def match_order():
             webmin_params.append(value)
     web_script = WebminObj(app_name='oms')
     flash(web_script.run_script(*webmin_params))
-    return redirect(url_for('oms.get_order_redirect', order_sn=script_info['order-sn']))
+    # return redirect(url_for('oms.get_order_redirect', order_sn=script_info['order-sn']))
+    return web_script.run_script(*webmin_params)
 
 
 @oms.route('/allProcess/addSkuOms', methods=['GET', 'POST'])

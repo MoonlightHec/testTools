@@ -8,9 +8,9 @@
     <div>
         <div class="webmin-info">
             <div class="webmin-script-desc">
-                <div class="webmin-script-name">接收pms采购入库数据:</div>
+                <div class="webmin-script-name">消费pms凭证源数据:</div>
                 <div>
-                    /usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_no_dist
+                    /usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_details
                 </div>
             </div>
 
@@ -20,7 +20,7 @@
                 <div class="div-submit">
                     <label class="label-webmin-submit">选择脚本:</label>
                     <select class="input-common" name="script-name">
-                        <option value="get_purchase_info">接收pms采购入库数据</option>
+                        <option value="get_pms_cert">消费pms凭证源数据</option>
                     </select>
                 </div>
                 <div class="div-submit">

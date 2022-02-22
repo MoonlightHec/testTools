@@ -1,4 +1,4 @@
-/*造单、全流程最大的div盒子*/
+/*造单、全流程,最大的div盒子*/
 .order-info {
     width: 47vw;
     height: 77vh;
@@ -49,4 +49,11 @@
     text-align: left;
     font-size: 14px;
     margin-right: 5px;
+}
+
+.flash-msg {
+    height: 40vh;
+    background: aqua;
+    color: orangered;
+    text-align: center;
 }

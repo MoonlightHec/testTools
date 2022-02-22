@@ -5,11 +5,10 @@
 # @File : plm.py
 # @desc :
 """
-import inspect
-import os
-import time
+import random
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import json
-lst = [1,2,3,4,5,6]
-print(*lst[1:])
+purchase_info = {
+    "sku": '7777777777',  # sku
+    "sku_name": '产品名称',  # 产品名称
+}
+print("ssss  %s sss %s".replace('%s', '{}').format(*purchase_info.values()))

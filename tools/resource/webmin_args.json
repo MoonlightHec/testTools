@@ -179,10 +179,25 @@
       "save_url": "https://10.60.48.65:8100/cron/save_cron.cgi",
       "execute_url": "https://10.60.48.65:8100/cron/exec_cron.cgi?idx={}"
     },
-    "push_purchase_info": {
-      "desc": "推送入库明细数据",
+    "auto_back_detail_cert": {
+      "desc": "入库明细凭证数据",
       "cmd": "cd /data/www/devel/pms/daemon && php fas/autoBackDetailCert.php -s={} -e={}",
-      "comment": "推送入库明细数据-lijun"
+      "comment": "入库明细凭证数据-lijun"
+    },
+    "auto_finance_order_cert": {
+      "desc": "退款单凭证基础数据",
+      "cmd": "cd /data/www/devel/pms/daemon && php fas/autoFinanceOrderCert.php -s={} -e={}",
+      "comment": "退款单凭证基础数据-lijun"
+    },
+    "auto_sale_stockin_cert": {
+      "desc": "铺货销售数据凭证基础数据",
+      "cmd": "cd /data/www/devel/pms/daemon && php fas/autoSaleStockinCert.php -s={} -e={}",
+      "comment": "铺货销售数据凭证基础数据-lijun"
+    },
+    "auto_defective_order_cert": {
+      "desc": "退货扣款凭证基础数据",
+      "cmd": "cd /data/www/devel/pms/daemon && php fas/autoDefectiveOrderCert.php -s={} -e={}",
+      "comment": "退货扣款凭证基础数据-lijun"
     }
   },
   "fas": {
@@ -193,10 +208,10 @@
       "save_url": "https://10.60.34.197:8100/cron/save_cron.cgi",
       "execute_url": "https://10.60.34.197:8100/cron/exec_cron.cgi?idx={}"
     },
-    "get_purchase_info": {
-      "desc": "消费pms采购数据",
-      "cmd": "/usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_no_dist",
-      "comment": "消费pms采购数据-lijun"
+    "get_pms_cert": {
+      "desc": "消费pms凭证源数据",
+      "cmd": "/usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_details",
+      "comment": "消费pms凭证源数据-lijun"
     }
   }
 }
