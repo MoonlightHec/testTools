@@ -7,7 +7,7 @@
 """
 
 from tools.DbTools import DbTools
-from tools.format import Format
+from tools.format import serialize
 
 if __name__ == '__main__':
     order_sn = 'U2112291640748476'
@@ -33,8 +33,7 @@ if __name__ == '__main__':
                     '"commodity_quantity":"1","commodity_unit_value":"3.55","customs_code":"6109100010","express_id":"1530","express_code":"CAEXPXH","single_price":"9.78133",' \
                     '"head_cost":0,"sales_head_cost":0,"tariff":0,"value_added_tax":0,"duties":0,"other_cost":0,"currency":"USD","usd_cost_adjust":0,"rate":"1.0000000000",' \
                     '"relevant_add_time":"2020-09-03 20:23:41"}],"logistics_code":"XHWL","logistics_name":"EMS(SZ)","picking_type":"1","order_shipper_no":"FZ001"}]}]'
-    shipping_format = Format(shipping_info)
-    message = shipping_format.serialize()
+    message = serialize(shipping_info)
 
     """
     # 推送到MQ

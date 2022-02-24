@@ -198,6 +198,11 @@
       "desc": "退货扣款凭证基础数据",
       "cmd": "cd /data/www/devel/pms/daemon && php fas/autoDefectiveOrderCert.php -s={} -e={}",
       "comment": "退货扣款凭证基础数据-lijun"
+    },
+    "auto_finance_pay_cert": {
+      "desc": "请款凭证基础数据",
+      "cmd": "cd /data/www/devel/pms/daemon && php fas/autoFinancePayCert.php -s={} -e={}",
+      "comment": "退货扣款凭证基础数据-lijun"
     }
   },
   "fas": {

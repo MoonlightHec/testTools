@@ -3,7 +3,7 @@
 # @Time : 2021/11/15 10:43 
 # @Author : lijun
 # @File : encrypt.py
-# @desc :
+# @desc : 加密
 """
 import hashlib
 

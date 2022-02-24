@@ -160,7 +160,6 @@
         {% block flash %}
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
-
                     {% for msg in messages %}
                         {{ msg }}
                     {% endfor %}
