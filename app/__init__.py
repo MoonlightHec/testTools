@@ -35,7 +35,7 @@ def app_config(env='product'):
     return env_config
 
 
-def create_app(env='develop'):
+def create_app(env='product'):
     """初始化app的各项功能,生产、组装app的工厂"""
     env_config = app_config(env)
 
