@@ -58,7 +58,7 @@ class WebminObj:
 
     def run_script(self, script_name, *args):
         try:
-            params = self.request_info[script_name.lower()]
+            params = self.request_info[script_name]
         except KeyError:
             print("脚本名不存在")
             return "脚本名不存在"
