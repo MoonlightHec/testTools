@@ -106,6 +106,14 @@
     "MQ_SyncCertProfitToFas": {
       "cmd": "php /data/www/devel/oms/daemon/interface_mq/fas/MQ_SyncCertProfitToFas.php",
       "comment": "凭证项目-利润数据推送至fas-李军"
+    },
+    "MQ_SyncCertOrderToFas": {
+      "cmd": "php /data/www/devel/oms/daemon/interface_mq/fas/MQ_SyncCertOrderToFas.php --start_time {} --end_time {}",
+      "comment": "凭证项目-订单数据推送至fas-李军"
+    },
+    "MQ_SyncCertTrapOrderToFas": {
+      "cmd": "php /data/www/devel/oms/daemon/interface_mq/fas/MQ_SyncCertTrapOrderToFas.php",
+      "comment": "凭证项目-订单补漏数据推送至fas-李军"
     }
   },
   "sms": {
@@ -187,9 +195,17 @@
       "save_url": "https://10.60.34.197:8100/cron/save_cron.cgi",
       "execute_url": "https://10.60.34.197:8100/cron/exec_cron.cgi?idx={}"
     },
-    "get_pms_cert": {
+    "get_cert_pms": {
       "cmd": "/usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_details",
       "comment": "消费pms凭证源数据-lijun"
+    },
+    "get_cert_oms": {
+      "cmd": "/usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_oms_profit_details",
+      "comment": "消费pms凭证源数据-lijun"
+    },
+    "get_oms_order_details": {
+      "cmd": "/usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_oms_order_details",
+      "comment": "消费pms订单数据-lijun"
     }
   }
 }

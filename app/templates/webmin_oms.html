@@ -25,6 +25,10 @@
                 <div class="webmin-script-name">利润数据推送至fas:</div>
                 <div>php /data/www/devel/oms/daemon/interface_mq/fas/MQ_SyncCertProfitToFas.php</div>
             </div>
+            <div class="webmin-script-desc">
+                <div class="webmin-script-name">订单数据推送至fas:</div>
+                <div>php /data/www/devel/oms/daemon/interface_mq/fas/MQ_SyncCertOrderToFas.php --start_time {} --end_time {}</div>
+            </div>
 
         </div>
         <div class="webmin-submit">
@@ -34,6 +38,8 @@
                     <select class="input-common" name="script-name">
                         <option value="get_profit_to_fas">get_profit_to_fas</option>
                         <option value="MQ_SyncCertProfitToFas">MQ_SyncCertProfitToFas</option>
+                        <option value="MQ_SyncCertOrderToFas">MQ_SyncCertOrderToFas</option>
+                        <option value="MQ_SyncCertTrapOrderToFas">推送订单补漏数据</option>
                         <option value="推送异常工单到wos">推送异常工单到wos</option>
                         <option value="匹配订单">匹配订单</option>
                     </select>
