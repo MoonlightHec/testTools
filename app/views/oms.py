@@ -212,7 +212,7 @@ def order_process_post_picking():
     if order_sn_web['order-sn']:
         process = OrderAllProcess(order_sn_web['order-sn'])
         web_script = WebminObj(app_name='oms')
-        return web_script.run_script('同步配货单到WMS', process.get_picking_sn())
+        return web_script.run_script('同步配货单到wms', process.get_picking_sn())
     return "请输入订单号"
 
 

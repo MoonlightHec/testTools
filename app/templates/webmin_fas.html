@@ -13,6 +13,12 @@
                     /usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_purchase_details
                 </div>
             </div>
+            <div class="webmin-script-desc">
+                <div class="webmin-script-name">消费oms凭证源数据:</div>
+                <div>
+                    /usr/local/services/php-7.1.25/bin/php /data/www/devel/finance/artisan get_cert_oms_profit_details
+                </div>
+            </div>
 
         </div>
         <div class="webmin-submit">
@@ -20,7 +26,9 @@
                 <div class="div-submit">
                     <label class="label-webmin-submit">选择脚本:</label>
                     <select class="input-common" name="script-name">
-                        <option value="get_pms_cert">消费pms凭证源数据</option>
+                        <option value="get_cert_pms">消费pms采购凭证源数据</option>
+                        <option value="get_cert_oms">消费oms收入凭证源数据</option>
+                        <option value="get_oms_order_details">消费oms订单数据</option>
                     </select>
                 </div>
                 <div class="div-submit">
