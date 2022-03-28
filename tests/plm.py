@@ -1,14 +1,11 @@
-# _*_ coding: utf-8 _*_
-"""
-# @Time : 2021/11/16 17:55 
-# @Author : lijun
-# @File : plm.py
-# @desc :
-"""
-import random
+# [汇总表.金额]*[汇总表.本币汇率]-[汇总表.金额]*[汇总表.本币汇率]/1.13*13%
 
-purchase_info = {
-    "sku": '7777777777',  # sku
-    "sku_name": '产品名称',  # 产品名称
-}
-print("ssss  %s sss %s".replace('%s', '{}').format(*purchase_info.values()))
+
+def add(x, y):
+    return x * y - (x * y / 1.13 * 0.13)
+
+
+def add_plus(x, y):
+    return x*y*(1-1/1.13)
+
+
